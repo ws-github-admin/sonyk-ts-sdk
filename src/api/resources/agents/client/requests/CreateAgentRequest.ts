@@ -10,18 +10,19 @@ import * as Sonyk from "../../../../index.js";
  *         agent_name: "Restaurant Receptionist",
  *         agent_json: {
  *             llm: {
- *                 model: "gpt-4o-mini",
  *                 provider: "openai",
+ *                 model: "gpt-5",
  *                 systemPrompt: "# Role\nYou are Georgia, a friendly and professional receptionist at the Vincenzo Capuano restaurant.\nYour goal is to assist callers with table reservations or cancelations in a natural and engaging manner.\n\nRestaurant opening hours: 10 AM to 11 PM daily\nLocation: 24 Park Street\n\n# Tasks\n- Answer questions about the restaurant\n- Make table reservations\n- Cancel existing reservations\n- Provide information about menu and hours\n\n# Guidelines\n- Always be polite and professional\n- Confirm all reservation details\n- If you can't help, politely explain and offer alternatives\n"
  *             },
  *             stt: {
+ *                 provider: "deepgram",
  *                 model: "nova-3",
- *                 provider: "deepgram"
+ *                 language: "en"
  *             },
  *             tts: {
- *                 model: "Eleven-turbo-v2-5",
- *                 voiceId: "EXAVITQu4vr4xnSDxMaL",
- *                 provider: "elevenlabs"
+ *                 provider: "elevenlabs",
+ *                 model: "eleven_multilingual_v2",
+ *                 voiceId: "sarah"
  *             },
  *             name: "Georgia - Restaurant Receptionist",
  *             firstMessage: "Hello! Welcome to Vincenzo Capuano restaurant. I'm Georgia, how can I help you today?"
