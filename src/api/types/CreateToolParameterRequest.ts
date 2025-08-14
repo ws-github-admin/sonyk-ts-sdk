@@ -17,17 +17,14 @@ export interface CreateToolParameterRequest {
      * - **array**: List of values
      * - **object**: Complex nested data
      */
-    param_type: CreateToolParameterRequest.ParamType;
+    data_type: CreateToolParameterRequest.DataType;
     /** Whether this parameter must be provided */
-    is_required?: boolean;
+    is_mandatory?: boolean;
     /**
      * Clear description of what this parameter represents.
      * The agent uses this to understand how to populate the parameter.
      */
     param_description: string;
-    default_value?: unknown;
-    /** Optional validation rules for the parameter */
-    validation_rules?: CreateToolParameterRequest.ValidationRules;
 }
 
 export namespace CreateToolParameterRequest {
@@ -40,8 +37,8 @@ export namespace CreateToolParameterRequest {
      * - **array**: List of values
      * - **object**: Complex nested data
      */
-    export type ParamType = "string" | "integer" | "number" | "boolean" | "array" | "object";
-    export const ParamType = {
+    export type DataType = "string" | "integer" | "number" | "boolean" | "array" | "object";
+    export const DataType = {
         String: "string",
         Integer: "integer",
         Number: "number",
@@ -49,18 +46,4 @@ export namespace CreateToolParameterRequest {
         Array: "array",
         Object: "object",
     } as const;
-
-    /**
-     * Optional validation rules for the parameter
-     */
-    export interface ValidationRules {
-        /** Minimum value (for numbers) or length (for strings) */
-        min?: number;
-        /** Maximum value (for numbers) or length (for strings) */
-        max?: number;
-        /** Regular expression pattern for string validation */
-        pattern?: string;
-        /** List of allowed values */
-        enum?: string[];
-    }
 }

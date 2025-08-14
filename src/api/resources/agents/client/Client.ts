@@ -137,7 +137,7 @@ export class Agents {
      *             llm: {
      *                 provider: "openai",
      *                 model: "gpt-5",
-     *                 systemPrompt: "# Role\nYou are Georgia, a friendly and professional receptionist at the Vincenzo Capuano restaurant.\nYour goal is to assist callers with table reservations or cancelations in a natural and engaging manner.\n\nRestaurant opening hours: 10 AM to 11 PM daily\nLocation: 24 Park Street\n\n# Tasks\n- Answer questions about the restaurant\n- Make table reservations\n- Cancel existing reservations\n- Provide information about menu and hours\n\n# Guidelines\n- Always be polite and professional\n- Confirm all reservation details\n- If you can't help, politely explain and offer alternatives\n"
+     *                 systemPrompt: "# Role\nYou are Georgia, a friendly and professional receptionist at the  restaurant.\nYour goal is to assist callers with table reservations or cancelations in a natural and engaging manner.\n\nRestaurant opening hours: 10 AM to 11 PM daily\nLocation: 24 Park Street\n\n# Tasks\n- Answer questions about the restaurant\n- Make table reservations\n- Cancel existing reservations\n- Provide information about menu and hours\n\n# Guidelines\n- Always be polite and professional\n- Confirm all reservation details\n- If you can't help, politely explain and offer alternatives\n"
      *             },
      *             stt: {
      *                 provider: "deepgram",
@@ -150,7 +150,7 @@ export class Agents {
      *                 voiceId: "sarah"
      *             },
      *             name: "Georgia - Restaurant Receptionist",
-     *             firstMessage: "Hello! Welcome to Vincenzo Capuano restaurant. I'm Georgia, how can I help you today?"
+     *             firstMessage: "Hello! Welcome to  restaurant. I'm Georgia, how can I help you today?"
      *         }
      *     })
      */
@@ -222,7 +222,7 @@ export class Agents {
      * @param {Agents.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.agents.getAgent("ec2b396d-58e0-96f8-89af-f35908a8b36")
+     *     await client.agents.getAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
      */
     public getAgent(
         agentId: string,
@@ -293,7 +293,7 @@ export class Agents {
      * @param {Agents.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.agents.updateAgent("ec2b396d-58e0-96f8-89af-f35908a8b36")
+     *     await client.agents.updateAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
      */
     public updateAgent(
         agentId: string,
@@ -367,7 +367,7 @@ export class Agents {
      * @param {Agents.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.agents.deleteAgent("ec2b396d-58e0-96f8-89af-f35908a8b36")
+     *     await client.agents.deleteAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
      */
     public deleteAgent(
         agentId: string,
@@ -436,7 +436,7 @@ export class Agents {
      * @param {Agents.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.agents.getAgentTools("ec2b396d-58e0-96f8-89af-f35908a8b36")
+     *     await client.agents.getAgentTools("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
      */
     public getAgentTools(
         agentId: string,
@@ -506,7 +506,7 @@ export class Agents {
      * @param {Agents.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.agents.assignToolToAgent("ec2b396d-58e0-96f8-89af-f35908a8b36", {
+     *     await client.agents.assignToolToAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", {
      *         toolId: "tool_123abc456def"
      *     })
      */
@@ -583,7 +583,7 @@ export class Agents {
      * @param {Agents.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.agents.unassignToolFromAgent("ec2b396d-58e0-96f8-89af-f35908a8b36", {
+     *     await client.agents.unassignToolFromAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", {
      *         toolId: "toolId"
      *     })
      */

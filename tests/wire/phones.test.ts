@@ -18,7 +18,7 @@ describe("Phones", () => {
             data: [
                 {
                     pk_phone_id: "phone_abc123def456",
-                    phone_number: "+1234567890",
+                    phone_number: "+xxxxxxxxxx",
                     provider: "twilio",
                     nickname: "Main Reception Line",
                     is_active: true,
@@ -54,7 +54,7 @@ describe("Phones", () => {
             data: [
                 {
                     pk_phone_id: "phone_abc123def456",
-                    phone_number: "+1234567890",
+                    phone_number: "+xxxxxxxxxx",
                     provider: "twilio",
                     nickname: "Main Reception Line",
                     is_active: true,
@@ -69,14 +69,14 @@ describe("Phones", () => {
     test("createPhone", async () => {
         const server = mockServerPool.createServer();
         const client = new SonykClient({ apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = { phoneNumber: "+1234567890", provider: "twilio" };
+        const rawRequestBody = { phoneNumber: "+xxxxxxxxxx", provider: "twilio" };
         const rawResponseBody = {
             success: true,
             message: "message",
             timestamp: "2024-01-15T09:30:00Z",
             data: {
                 pk_phone_id: "phone_abc123def456",
-                phone_number: "+1234567890",
+                phone_number: "+xxxxxxxxxx",
                 provider: "twilio",
                 nickname: "Main Reception Line",
                 is_active: true,
@@ -96,7 +96,7 @@ describe("Phones", () => {
             .build();
 
         const response = await client.phones.createPhone({
-            phoneNumber: "+1234567890",
+            phoneNumber: "+xxxxxxxxxx",
             provider: "twilio",
         });
         expect(response).toEqual({
@@ -105,7 +105,7 @@ describe("Phones", () => {
             timestamp: "2024-01-15T09:30:00Z",
             data: {
                 pk_phone_id: "phone_abc123def456",
-                phone_number: "+1234567890",
+                phone_number: "+xxxxxxxxxx",
                 provider: "twilio",
                 nickname: "Main Reception Line",
                 is_active: true,
@@ -130,7 +130,7 @@ describe("Phones", () => {
             timestamp: "2024-01-15T09:30:00Z",
             data: {
                 pk_phone_id: "phone_abc123def456",
-                phone_number: "+1234567890",
+                phone_number: "+xxxxxxxxxx",
                 provider: "twilio",
                 nickname: "Main Reception Line",
                 is_active: true,
@@ -155,7 +155,7 @@ describe("Phones", () => {
             timestamp: "2024-01-15T09:30:00Z",
             data: {
                 pk_phone_id: "phone_abc123def456",
-                phone_number: "+1234567890",
+                phone_number: "+xxxxxxxxxx",
                 provider: "twilio",
                 nickname: "Main Reception Line",
                 is_active: true,
@@ -180,7 +180,7 @@ describe("Phones", () => {
             timestamp: "2024-01-15T09:30:00Z",
             data: {
                 pk_phone_id: "phone_abc123def456",
-                phone_number: "+1234567890",
+                phone_number: "+xxxxxxxxxx",
                 provider: "twilio",
                 nickname: "Main Reception Line",
                 is_active: true,
@@ -206,7 +206,7 @@ describe("Phones", () => {
             timestamp: "2024-01-15T09:30:00Z",
             data: {
                 pk_phone_id: "phone_abc123def456",
-                phone_number: "+1234567890",
+                phone_number: "+xxxxxxxxxx",
                 provider: "twilio",
                 nickname: "Main Reception Line",
                 is_active: true,
@@ -252,7 +252,7 @@ describe("Phones", () => {
             timestamp: "2024-01-15T09:30:00Z",
             data: {
                 pk_phone_id: "phone_abc123def456",
-                phone_number: "+1234567890",
+                phone_number: "+xxxxxxxxxx",
                 provider: "twilio",
                 nickname: "Main Reception Line",
                 is_active: true,
@@ -280,7 +280,7 @@ describe("Phones", () => {
             timestamp: "2024-01-15T09:30:00Z",
             data: {
                 pk_phone_id: "phone_abc123def456",
-                phone_number: "+1234567890",
+                phone_number: "+xxxxxxxxxx",
                 provider: "twilio",
                 nickname: "Main Reception Line",
                 is_active: true,
@@ -305,7 +305,7 @@ describe("Phones", () => {
             timestamp: "2024-01-15T09:30:00Z",
             data: {
                 pk_phone_id: "phone_abc123def456",
-                phone_number: "+1234567890",
+                phone_number: "+xxxxxxxxxx",
                 provider: "twilio",
                 nickname: "Main Reception Line",
                 is_active: true,
@@ -330,7 +330,7 @@ describe("Phones", () => {
             timestamp: "2024-01-15T09:30:00Z",
             data: {
                 pk_phone_id: "phone_abc123def456",
-                phone_number: "+1234567890",
+                phone_number: "+xxxxxxxxxx",
                 provider: "twilio",
                 nickname: "Main Reception Line",
                 is_active: true,

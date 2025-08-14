@@ -142,7 +142,7 @@ export class Phones {
      *
      * @example
      *     await client.phones.createPhone({
-     *         phoneNumber: "+1234567890",
+     *         phoneNumber: "+xxxxxxxxxx",
      *         provider: "twilio"
      *     })
      */

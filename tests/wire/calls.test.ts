@@ -9,7 +9,7 @@ describe("Calls", () => {
     test("initiateCall", async () => {
         const server = mockServerPool.createServer();
         const client = new SonykClient({ apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = { agentId: "ec2b396d-58e0-96f8-89af-f35908a8b36", toNumber: "+919831222222" };
+        const rawRequestBody = { agentId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", toNumber: "+919831222222" };
         const rawResponseBody = {
             success: true,
             message: "message",
@@ -37,7 +37,7 @@ describe("Calls", () => {
             .build();
 
         const response = await client.calls.initiateCall({
-            agentId: "ec2b396d-58e0-96f8-89af-f35908a8b36",
+            agentId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
             toNumber: "+919831222222",
         });
         expect(response).toEqual({

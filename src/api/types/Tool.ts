@@ -12,26 +12,9 @@ export interface Tool {
     /** Description of what the tool does */
     tool_description?: string;
     /** API endpoint URL that will be called */
-    tool_endpoint?: string;
-    /** HTTP method for the tool execution */
-    tool_method?: Tool.ToolMethod;
-    /** HTTP headers to include with requests */
-    tool_headers?: Record<string, string>;
+    server_url?: string;
     /** Parameters that the tool accepts */
     parameters?: Sonyk.ToolParameter[];
     created_at?: string;
     fk_org_id?: number;
-}
-
-export namespace Tool {
-    /**
-     * HTTP method for the tool execution
-     */
-    export type ToolMethod = "GET" | "POST" | "PUT" | "DELETE";
-    export const ToolMethod = {
-        Get: "GET",
-        Post: "POST",
-        Put: "PUT",
-        Delete: "DELETE",
-    } as const;
 }

@@ -100,7 +100,7 @@ await client.agents.createAgent({
             provider: "openai",
             model: "gpt-5",
             systemPrompt:
-                "# Role\nYou are Georgia, a friendly and professional receptionist at the Vincenzo Capuano restaurant.\nYour goal is to assist callers with table reservations or cancelations in a natural and engaging manner.\n\nRestaurant opening hours: 10 AM to 11 PM daily\nLocation: 24 Park Street\n\n# Tasks\n- Answer questions about the restaurant\n- Make table reservations\n- Cancel existing reservations\n- Provide information about menu and hours\n\n# Guidelines\n- Always be polite and professional\n- Confirm all reservation details\n- If you can't help, politely explain and offer alternatives\n",
+                "# Role\nYou are Georgia, a friendly and professional receptionist at the  restaurant.\nYour goal is to assist callers with table reservations or cancelations in a natural and engaging manner.\n\nRestaurant opening hours: 10 AM to 11 PM daily\nLocation: 24 Park Street\n\n# Tasks\n- Answer questions about the restaurant\n- Make table reservations\n- Cancel existing reservations\n- Provide information about menu and hours\n\n# Guidelines\n- Always be polite and professional\n- Confirm all reservation details\n- If you can't help, politely explain and offer alternatives\n",
         },
         stt: {
             provider: "deepgram",
@@ -113,7 +113,7 @@ await client.agents.createAgent({
             voiceId: "sarah",
         },
         name: "Georgia - Restaurant Receptionist",
-        firstMessage: "Hello! Welcome to Vincenzo Capuano restaurant. I'm Georgia, how can I help you today?",
+        firstMessage: "Hello! Welcome to  restaurant. I'm Georgia, how can I help you today?",
     },
 });
 ```
@@ -178,7 +178,7 @@ Retrieve a specific agent by ID with full configuration
 <dd>
 
 ```typescript
-await client.agents.getAgent("ec2b396d-58e0-96f8-89af-f35908a8b36");
+await client.agents.getAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx");
 ```
 
 </dd>
@@ -242,7 +242,7 @@ allowing partial updates while preserving existing settings.
 <dd>
 
 ```typescript
-await client.agents.updateAgent("ec2b396d-58e0-96f8-89af-f35908a8b36");
+await client.agents.updateAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx");
 ```
 
 </dd>
@@ -313,7 +313,7 @@ Delete an agent (permanent deletion)
 <dd>
 
 ```typescript
-await client.agents.deleteAgent("ec2b396d-58e0-96f8-89af-f35908a8b36");
+await client.agents.deleteAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx");
 ```
 
 </dd>
@@ -376,7 +376,7 @@ Retrieve all tools assigned to a specific agent
 <dd>
 
 ```typescript
-await client.agents.getAgentTools("ec2b396d-58e0-96f8-89af-f35908a8b36");
+await client.agents.getAgentTools("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx");
 ```
 
 </dd>
@@ -439,7 +439,7 @@ Assign an existing tool to an agent
 <dd>
 
 ```typescript
-await client.agents.assignToolToAgent("ec2b396d-58e0-96f8-89af-f35908a8b36", {
+await client.agents.assignToolToAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", {
     toolId: "tool_123abc456def",
 });
 ```
@@ -512,7 +512,7 @@ Remove a tool assignment from an agent
 <dd>
 
 ```typescript
-await client.agents.unassignToolFromAgent("ec2b396d-58e0-96f8-89af-f35908a8b36", {
+await client.agents.unassignToolFromAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", {
     toolId: "toolId",
 });
 ```
@@ -653,7 +653,7 @@ Add a new phone number to the organization
 
 ```typescript
 await client.phones.createPhone({
-    phoneNumber: "+1234567890",
+    phoneNumber: "+xxxxxxxxxx",
     provider: "twilio",
 });
 ```
@@ -1120,8 +1120,7 @@ await client.tools.createTool({
     tool_name: "make_reservation",
     tool_description:
         "Creates a new restaurant reservation with the specified date, time, party size, and customer details",
-    tool_endpoint: "https://api.restaurant.com/reservations",
-    tool_method: "GET",
+    server_url: "https://api.restaurant.com/reservations",
 });
 ```
 
@@ -1185,7 +1184,7 @@ Retrieve a specific tool by ID
 <dd>
 
 ```typescript
-await client.tools.getTool("1a0e22ab-44g6-4009-915a-567815f5k293");
+await client.tools.getTool("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx");
 ```
 
 </dd>
@@ -1248,12 +1247,11 @@ Update tool configuration
 <dd>
 
 ```typescript
-await client.tools.updateTool("1a0e22ab-44g6-4009-915a-567815f5k293", {
+await client.tools.updateTool("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", {
     tool_name: "make_reservation",
     tool_description:
         "Creates a new restaurant reservation with the specified date, time, party size, and customer details",
-    tool_endpoint: "https://api.restaurant.com/reservations",
-    tool_method: "GET",
+    server_url: "https://api.restaurant.com/reservations",
 });
 ```
 
@@ -1325,7 +1323,7 @@ Delete a tool
 <dd>
 
 ```typescript
-await client.tools.deleteTool("1a0e22ab-44g6-4009-915a-567815f5k293");
+await client.tools.deleteTool("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx");
 ```
 
 </dd>
@@ -1415,7 +1413,7 @@ during conversations. The system supports multiple asset types and intelligent p
 <dd>
 
 ```typescript
-await client.assets.listAgentAssets("ec2b396d-58e0-96f8-89af-f35908a8b36", {
+await client.assets.listAgentAssets("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", {
     search: "product documentation",
 });
 ```
@@ -1504,7 +1502,7 @@ The response includes details about how the asset was processed:
 <dd>
 
 ```typescript
-await client.assets.getAgentAssetDetails("ec2b396d-58e0-96f8-89af-f35908a8b36", 4567);
+await client.assets.getAgentAssetDetails("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", 4567);
 ```
 
 </dd>
@@ -1595,7 +1593,7 @@ When text content is updated:
 <dd>
 
 ```typescript
-await client.assets.updateAgentAsset("ec2b396d-58e0-96f8-89af-f35908a8b36", 4569);
+await client.assets.updateAgentAsset("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", 4569);
 ```
 
 </dd>
@@ -1694,7 +1692,7 @@ Permanently delete an asset from the agent's knowledge base.
 <dd>
 
 ```typescript
-await client.assets.deleteAgentAsset("ec2b396d-58e0-96f8-89af-f35908a8b36", 4369);
+await client.assets.deleteAgentAsset("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", 4369);
 ```
 
 </dd>
@@ -1837,7 +1835,7 @@ Upload a file to create a new knowledge base asset for the agent with advanced A
 <dd>
 
 ```typescript
-await client.assets.uploadAgentAsset("ec2b396d-58e0-96f8-89af-f35908a8b36", {
+await client.assets.uploadAgentAsset("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", {
     file: fs.createReadStream("/path/to/your/file"),
 });
 ```
@@ -2012,7 +2010,7 @@ Provide agents with conversation templates and best practices:
 <dd>
 
 ```typescript
-await client.assets.createAgentTextAsset("ec2b396d-58e0-96f8-89af-f35908a8b36", {
+await client.assets.createAgentTextAsset("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", {
     text: "# Customer Service FAQ - Updated January 2025\n\n## Business Information\n\n### Q: What are your business hours?\nA: We are open Monday to Friday from 9 AM to 6 PM EST. Weekend support is available via email only.\n\n### Q: Where are you located?\nA: Our headquarters is at 123 Business St, City, State 12345. We also have locations in Chicago and Miami.\n\n## Product Support\n\n### Q: How do I return a product?\nA: Returns are easy! Visit our website's return portal, print a shipping label, and send the item back within 30 days. Refunds are processed within 5-7 business days.\n\n### Q: What's your warranty policy?\nA: All products come with a standard 1-year warranty. Extended warranties up to 3 years are available for purchase.\n\n## Account Management\n\n### Q: How do I reset my password?\nA: Click 'Forgot Password' on the login page, enter your email, and follow the instructions sent to your inbox. The reset link expires in 24 hours.\n\n### Q: Can I change my subscription plan?\nA: Yes! Log into your account, go to Settings > Subscription, and select your new plan. Changes take effect immediately.\n",
 });
 ```
@@ -2140,7 +2138,7 @@ The response includes both the content and useful metadata:
 <dd>
 
 ```typescript
-await client.assets.getAgentAssetContent("ec2b396d-58e0-96f8-89af-f35908a8b36", 3478);
+await client.assets.getAgentAssetContent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", 3478);
 ```
 
 </dd>
@@ -2291,7 +2289,7 @@ Controls how closely results must match your query:
 <dd>
 
 ```typescript
-await client.assets.searchAgentAssets("ec2b396d-58e0-96f8-89af-f35908a8b36", {
+await client.assets.searchAgentAssets("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", {
     query: "How do I reset my password?",
 });
 ```
@@ -2368,7 +2366,7 @@ Validates permissions and credits, then forwards request to core.sonyk.io.
 
 ```typescript
 await client.calls.initiateCall({
-    agentId: "ec2b396d-58e0-96f8-89af-f35908a8b36",
+    agentId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
     toNumber: "+919831222222",
 });
 ```

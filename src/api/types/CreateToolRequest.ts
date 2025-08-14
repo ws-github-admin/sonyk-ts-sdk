@@ -19,15 +19,7 @@ export interface CreateToolRequest {
      * The API endpoint URL that will be called when the agent uses this tool.
      * This should be a complete, accessible URL that accepts the specified HTTP method.
      */
-    tool_endpoint: string;
-    /**
-     * HTTP method to use when calling the tool:
-     * - **GET**: Retrieve information
-     * - **POST**: Create new resources
-     * - **PUT**: Update existing resources
-     * - **DELETE**: Remove resources
-     */
-    tool_method: CreateToolRequest.ToolMethod;
+    server_url: string;
     /**
      * HTTP headers to include with all tool requests.
      * Common headers include Content-Type and Authorization.
@@ -38,21 +30,4 @@ export interface CreateToolRequest {
      * that the agent can pass to your API endpoint.
      */
     parameters?: Sonyk.CreateToolParameterRequest[];
-}
-
-export namespace CreateToolRequest {
-    /**
-     * HTTP method to use when calling the tool:
-     * - **GET**: Retrieve information
-     * - **POST**: Create new resources
-     * - **PUT**: Update existing resources
-     * - **DELETE**: Remove resources
-     */
-    export type ToolMethod = "GET" | "POST" | "PUT" | "DELETE";
-    export const ToolMethod = {
-        Get: "GET",
-        Post: "POST",
-        Put: "PUT",
-        Delete: "DELETE",
-    } as const;
 }

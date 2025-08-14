@@ -134,8 +134,7 @@ export class Tools {
      *     await client.tools.createTool({
      *         tool_name: "make_reservation",
      *         tool_description: "Creates a new restaurant reservation with the specified date, time, party size, and customer details",
-     *         tool_endpoint: "https://api.restaurant.com/reservations",
-     *         tool_method: "GET"
+     *         server_url: "https://api.restaurant.com/reservations"
      *     })
      */
     public createTool(
@@ -206,7 +205,7 @@ export class Tools {
      * @param {Tools.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.tools.getTool("1a0e22ab-44g6-4009-915a-567815f5k293")
+     *     await client.tools.getTool("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
      */
     public getTool(
         toolId: string,
@@ -274,11 +273,10 @@ export class Tools {
      * @param {Tools.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.tools.updateTool("1a0e22ab-44g6-4009-915a-567815f5k293", {
+     *     await client.tools.updateTool("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", {
      *         tool_name: "make_reservation",
      *         tool_description: "Creates a new restaurant reservation with the specified date, time, party size, and customer details",
-     *         tool_endpoint: "https://api.restaurant.com/reservations",
-     *         tool_method: "GET"
+     *         server_url: "https://api.restaurant.com/reservations"
      *     })
      */
     public updateTool(
@@ -351,7 +349,7 @@ export class Tools {
      * @param {Tools.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.tools.deleteTool("1a0e22ab-44g6-4009-915a-567815f5k293")
+     *     await client.tools.deleteTool("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
      */
     public deleteTool(
         toolId: string,

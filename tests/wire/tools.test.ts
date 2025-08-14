@@ -20,9 +20,7 @@ describe("Tools", () => {
                     pk_tool_id: "tool_123abc456def",
                     tool_name: "make_reservation",
                     tool_description: "Creates a new restaurant reservation with specified details",
-                    tool_endpoint: "https://api.restaurant.com/reservations",
-                    tool_method: "GET",
-                    tool_headers: { "Content-Type": "application/json", Authorization: "Bearer token123" },
+                    server_url: "https://api.restaurant.com/reservations",
                     parameters: [
                         {
                             param_name: "reservation_date",
@@ -61,12 +59,7 @@ describe("Tools", () => {
                     pk_tool_id: "tool_123abc456def",
                     tool_name: "make_reservation",
                     tool_description: "Creates a new restaurant reservation with specified details",
-                    tool_endpoint: "https://api.restaurant.com/reservations",
-                    tool_method: "GET",
-                    tool_headers: {
-                        "Content-Type": "application/json",
-                        Authorization: "Bearer token123",
-                    },
+                    server_url: "https://api.restaurant.com/reservations",
                     parameters: [
                         {
                             param_name: "reservation_date",
@@ -88,8 +81,7 @@ describe("Tools", () => {
             tool_name: "make_reservation",
             tool_description:
                 "Creates a new restaurant reservation with the specified date, time, party size, and customer details",
-            tool_endpoint: "https://api.restaurant.com/reservations",
-            tool_method: "GET",
+            server_url: "https://api.restaurant.com/reservations",
         };
         const rawResponseBody = {
             success: true,
@@ -99,9 +91,7 @@ describe("Tools", () => {
                 pk_tool_id: "tool_123abc456def",
                 tool_name: "make_reservation",
                 tool_description: "Creates a new restaurant reservation with specified details",
-                tool_endpoint: "https://api.restaurant.com/reservations",
-                tool_method: "GET",
-                tool_headers: { "Content-Type": "application/json", Authorization: "Bearer token123" },
+                server_url: "https://api.restaurant.com/reservations",
                 parameters: [
                     {
                         param_name: "reservation_date",
@@ -126,8 +116,7 @@ describe("Tools", () => {
             tool_name: "make_reservation",
             tool_description:
                 "Creates a new restaurant reservation with the specified date, time, party size, and customer details",
-            tool_endpoint: "https://api.restaurant.com/reservations",
-            tool_method: "GET",
+            server_url: "https://api.restaurant.com/reservations",
         });
         expect(response).toEqual({
             success: true,
@@ -137,12 +126,7 @@ describe("Tools", () => {
                 pk_tool_id: "tool_123abc456def",
                 tool_name: "make_reservation",
                 tool_description: "Creates a new restaurant reservation with specified details",
-                tool_endpoint: "https://api.restaurant.com/reservations",
-                tool_method: "GET",
-                tool_headers: {
-                    "Content-Type": "application/json",
-                    Authorization: "Bearer token123",
-                },
+                server_url: "https://api.restaurant.com/reservations",
                 parameters: [
                     {
                         param_name: "reservation_date",
@@ -168,9 +152,7 @@ describe("Tools", () => {
                 pk_tool_id: "tool_123abc456def",
                 tool_name: "make_reservation",
                 tool_description: "Creates a new restaurant reservation with specified details",
-                tool_endpoint: "https://api.restaurant.com/reservations",
-                tool_method: "GET",
-                tool_headers: { "Content-Type": "application/json", Authorization: "Bearer token123" },
+                server_url: "https://api.restaurant.com/reservations",
                 parameters: [
                     {
                         param_name: "reservation_date",
@@ -184,13 +166,13 @@ describe("Tools", () => {
         };
         server
             .mockEndpoint()
-            .get("/api/developer/tools/1a0e22ab-44g6-4009-915a-567815f5k293")
+            .get("/api/developer/tools/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.tools.getTool("1a0e22ab-44g6-4009-915a-567815f5k293");
+        const response = await client.tools.getTool("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx");
         expect(response).toEqual({
             success: true,
             message: "message",
@@ -199,12 +181,7 @@ describe("Tools", () => {
                 pk_tool_id: "tool_123abc456def",
                 tool_name: "make_reservation",
                 tool_description: "Creates a new restaurant reservation with specified details",
-                tool_endpoint: "https://api.restaurant.com/reservations",
-                tool_method: "GET",
-                tool_headers: {
-                    "Content-Type": "application/json",
-                    Authorization: "Bearer token123",
-                },
+                server_url: "https://api.restaurant.com/reservations",
                 parameters: [
                     {
                         param_name: "reservation_date",
@@ -225,8 +202,7 @@ describe("Tools", () => {
             tool_name: "make_reservation",
             tool_description:
                 "Creates a new restaurant reservation with the specified date, time, party size, and customer details",
-            tool_endpoint: "https://api.restaurant.com/reservations",
-            tool_method: "GET",
+            server_url: "https://api.restaurant.com/reservations",
         };
         const rawResponseBody = {
             success: true,
@@ -236,9 +212,7 @@ describe("Tools", () => {
                 pk_tool_id: "tool_123abc456def",
                 tool_name: "make_reservation",
                 tool_description: "Creates a new restaurant reservation with specified details",
-                tool_endpoint: "https://api.restaurant.com/reservations",
-                tool_method: "GET",
-                tool_headers: { "Content-Type": "application/json", Authorization: "Bearer token123" },
+                server_url: "https://api.restaurant.com/reservations",
                 parameters: [
                     {
                         param_name: "reservation_date",
@@ -252,19 +226,18 @@ describe("Tools", () => {
         };
         server
             .mockEndpoint()
-            .put("/api/developer/tools/1a0e22ab-44g6-4009-915a-567815f5k293")
+            .put("/api/developer/tools/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.tools.updateTool("1a0e22ab-44g6-4009-915a-567815f5k293", {
+        const response = await client.tools.updateTool("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", {
             tool_name: "make_reservation",
             tool_description:
                 "Creates a new restaurant reservation with the specified date, time, party size, and customer details",
-            tool_endpoint: "https://api.restaurant.com/reservations",
-            tool_method: "GET",
+            server_url: "https://api.restaurant.com/reservations",
         });
         expect(response).toEqual({
             success: true,
@@ -274,12 +247,7 @@ describe("Tools", () => {
                 pk_tool_id: "tool_123abc456def",
                 tool_name: "make_reservation",
                 tool_description: "Creates a new restaurant reservation with specified details",
-                tool_endpoint: "https://api.restaurant.com/reservations",
-                tool_method: "GET",
-                tool_headers: {
-                    "Content-Type": "application/json",
-                    Authorization: "Bearer token123",
-                },
+                server_url: "https://api.restaurant.com/reservations",
                 parameters: [
                     {
                         param_name: "reservation_date",
@@ -300,13 +268,13 @@ describe("Tools", () => {
         const rawResponseBody = { success: true, message: "message", timestamp: "2024-01-15T09:30:00Z" };
         server
             .mockEndpoint()
-            .delete("/api/developer/tools/1a0e22ab-44g6-4009-915a-567815f5k293")
+            .delete("/api/developer/tools/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.tools.deleteTool("1a0e22ab-44g6-4009-915a-567815f5k293");
+        const response = await client.tools.deleteTool("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx");
         expect(response).toEqual({
             success: true,
             message: "message",

@@ -78,7 +78,7 @@ export class Assets {
      * @throws {@link Sonyk.NotFoundError}
      *
      * @example
-     *     await client.assets.listAgentAssets("ec2b396d-58e0-96f8-89af-f35908a8b36", {
+     *     await client.assets.listAgentAssets("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", {
      *         search: "product documentation"
      *     })
      */
@@ -196,7 +196,7 @@ export class Assets {
      * @throws {@link Sonyk.NotFoundError}
      *
      * @example
-     *     await client.assets.getAgentAssetDetails("ec2b396d-58e0-96f8-89af-f35908a8b36", 4567)
+     *     await client.assets.getAgentAssetDetails("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", 4567)
      */
     public getAgentAssetDetails(
         agentId: string,
@@ -293,7 +293,7 @@ export class Assets {
      * @throws {@link Sonyk.BadRequestError}
      *
      * @example
-     *     await client.assets.updateAgentAsset("ec2b396d-58e0-96f8-89af-f35908a8b36", 4569)
+     *     await client.assets.updateAgentAsset("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", 4569)
      */
     public updateAgentAsset(
         agentId: string,
@@ -393,7 +393,7 @@ export class Assets {
      * @param {Assets.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.assets.deleteAgentAsset("ec2b396d-58e0-96f8-89af-f35908a8b36", 4369)
+     *     await client.assets.deleteAgentAsset("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", 4369)
      */
     public deleteAgentAsset(
         agentId: string,
@@ -533,7 +533,7 @@ export class Assets {
      *
      * @example
      *     import { createReadStream } from "fs";
-     *     await client.assets.uploadAgentAsset("ec2b396d-58e0-96f8-89af-f35908a8b36", {
+     *     await client.assets.uploadAgentAsset("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", {
      *         file: fs.createReadStream("/path/to/your/file")
      *     })
      */
@@ -726,7 +726,7 @@ export class Assets {
      * @throws {@link Sonyk.BadRequestError}
      *
      * @example
-     *     await client.assets.createAgentTextAsset("ec2b396d-58e0-96f8-89af-f35908a8b36", {
+     *     await client.assets.createAgentTextAsset("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", {
      *         text: "# Customer Service FAQ - Updated January 2025\n\n## Business Information\n\n### Q: What are your business hours?\nA: We are open Monday to Friday from 9 AM to 6 PM EST. Weekend support is available via email only.\n\n### Q: Where are you located?\nA: Our headquarters is at 123 Business St, City, State 12345. We also have locations in Chicago and Miami.\n\n## Product Support\n\n### Q: How do I return a product?\nA: Returns are easy! Visit our website's return portal, print a shipping label, and send the item back within 30 days. Refunds are processed within 5-7 business days.\n\n### Q: What's your warranty policy?\nA: All products come with a standard 1-year warranty. Extended warranties up to 3 years are available for purchase.\n\n## Account Management\n\n### Q: How do I reset my password?\nA: Click 'Forgot Password' on the login page, enter your email, and follow the instructions sent to your inbox. The reset link expires in 24 hours.\n\n### Q: Can I change my subscription plan?\nA: Yes! Log into your account, go to Settings > Subscription, and select your new plan. Changes take effect immediately.\n"
      *     })
      */
@@ -857,7 +857,7 @@ export class Assets {
      * @throws {@link Sonyk.NotFoundError}
      *
      * @example
-     *     await client.assets.getAgentAssetContent("ec2b396d-58e0-96f8-89af-f35908a8b36", 3478)
+     *     await client.assets.getAgentAssetContent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", 3478)
      */
     public getAgentAssetContent(
         agentId: string,
@@ -1002,7 +1002,7 @@ export class Assets {
      * @param {Assets.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.assets.searchAgentAssets("ec2b396d-58e0-96f8-89af-f35908a8b36", {
+     *     await client.assets.searchAgentAssets("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", {
      *         query: "How do I reset my password?"
      *     })
      */

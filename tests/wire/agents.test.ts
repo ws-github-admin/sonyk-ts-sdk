@@ -17,22 +17,21 @@ describe("Agents", () => {
             meta: { pagination: { currentPage: 1, totalPages: 1, totalItems: 1, itemsPerPage: 1 } },
             data: [
                 {
-                    agent_id: "ec2b396d-58e0-96f8-89af-f35908a8b36",
+                    agent_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                     agent_name: "Restaurant Receptionist",
                     agent_json: {
                         llm: {
                             model: "gpt-5",
                             systemPrompt:
-                                "# Role\nYou are Georgia, a friendly and professional receptionist at the Vincenzo Capuano restaurant.\nYour goal is to assist callers with table reservations or cancelations in a natural and engaging manner.\n\nRestaurant opening hours: 10 AM to 11 PM daily\nLocation: 24 Park Street\n\n# Tasks\n- Answer questions about the restaurant\n- Make table reservations\n- Cancel existing reservations\n- Provide information about menu and hours\n\n# Guidelines\n- Always be polite and professional\n- Confirm all reservation details\n- If you can't help, politely explain and offer alternatives\n",
+                                "# Role\nYou are Georgia, a friendly and professional receptionist at the  restaurant.\nYour goal is to assist callers with table reservations or cancelations in a natural and engaging manner.\n\nRestaurant opening hours: 10 AM to 11 PM daily\nLocation: 24 Park Street\n\n# Tasks\n- Answer questions about the restaurant\n- Make table reservations\n- Cancel existing reservations\n- Provide information about menu and hours\n\n# Guidelines\n- Always be polite and professional\n- Confirm all reservation details\n- If you can't help, politely explain and offer alternatives\n",
                             provider: "openai",
                         },
                         stt: { model: "nova-3", language: "en", provider: "deepgram" },
                         tts: { model: "eleven_multilingual_v2", voiceId: "sarah", provider: "elevenlabs" },
                         name: "Georgia - Restaurant Receptionist",
-                        firstMessage:
-                            "Hello! Welcome to Vincenzo Capuano restaurant. I'm Georgia, how can I help you today?",
+                        firstMessage: "Hello! Welcome to  restaurant. I'm Georgia, how can I help you today?",
                         webhookUrl: "https://api.restaurant.com/webhook/call-ended",
-                        callForwardNumber: "+1234567890",
+                        callForwardNumber: "+xxxxxxxxxx",
                     },
                     created_at: "2024-01-15T09:30:00Z",
                     fk_org_id: 1,
@@ -62,14 +61,14 @@ describe("Agents", () => {
             },
             data: [
                 {
-                    agent_id: "ec2b396d-58e0-96f8-89af-f35908a8b36",
+                    agent_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                     agent_name: "Restaurant Receptionist",
                     agent_json: {
                         llm: {
                             provider: "openai",
                             model: "gpt-5",
                             systemPrompt:
-                                "# Role\nYou are Georgia, a friendly and professional receptionist at the Vincenzo Capuano restaurant.\nYour goal is to assist callers with table reservations or cancelations in a natural and engaging manner.\n\nRestaurant opening hours: 10 AM to 11 PM daily\nLocation: 24 Park Street\n\n# Tasks\n- Answer questions about the restaurant\n- Make table reservations\n- Cancel existing reservations\n- Provide information about menu and hours\n\n# Guidelines\n- Always be polite and professional\n- Confirm all reservation details\n- If you can't help, politely explain and offer alternatives\n",
+                                "# Role\nYou are Georgia, a friendly and professional receptionist at the  restaurant.\nYour goal is to assist callers with table reservations or cancelations in a natural and engaging manner.\n\nRestaurant opening hours: 10 AM to 11 PM daily\nLocation: 24 Park Street\n\n# Tasks\n- Answer questions about the restaurant\n- Make table reservations\n- Cancel existing reservations\n- Provide information about menu and hours\n\n# Guidelines\n- Always be polite and professional\n- Confirm all reservation details\n- If you can't help, politely explain and offer alternatives\n",
                         },
                         stt: {
                             provider: "deepgram",
@@ -82,10 +81,9 @@ describe("Agents", () => {
                             voiceId: "sarah",
                         },
                         name: "Georgia - Restaurant Receptionist",
-                        firstMessage:
-                            "Hello! Welcome to Vincenzo Capuano restaurant. I'm Georgia, how can I help you today?",
+                        firstMessage: "Hello! Welcome to  restaurant. I'm Georgia, how can I help you today?",
                         webhookUrl: "https://api.restaurant.com/webhook/call-ended",
-                        callForwardNumber: "+1234567890",
+                        callForwardNumber: "+xxxxxxxxxx",
                     },
                     created_at: "2024-01-15T09:30:00Z",
                     fk_org_id: 1,
@@ -103,13 +101,13 @@ describe("Agents", () => {
                 llm: {
                     model: "gpt-5",
                     systemPrompt:
-                        "# Role\nYou are Georgia, a friendly and professional receptionist at the Vincenzo Capuano restaurant.\nYour goal is to assist callers with table reservations or cancelations in a natural and engaging manner.\n\nRestaurant opening hours: 10 AM to 11 PM daily\nLocation: 24 Park Street\n\n# Tasks\n- Answer questions about the restaurant\n- Make table reservations\n- Cancel existing reservations\n- Provide information about menu and hours\n\n# Guidelines\n- Always be polite and professional\n- Confirm all reservation details\n- If you can't help, politely explain and offer alternatives\n",
+                        "# Role\nYou are Georgia, a friendly and professional receptionist at the  restaurant.\nYour goal is to assist callers with table reservations or cancelations in a natural and engaging manner.\n\nRestaurant opening hours: 10 AM to 11 PM daily\nLocation: 24 Park Street\n\n# Tasks\n- Answer questions about the restaurant\n- Make table reservations\n- Cancel existing reservations\n- Provide information about menu and hours\n\n# Guidelines\n- Always be polite and professional\n- Confirm all reservation details\n- If you can't help, politely explain and offer alternatives\n",
                     provider: "openai",
                 },
                 stt: { model: "nova-3", language: "en", provider: "deepgram" },
                 tts: { model: "eleven_multilingual_v2", voiceId: "sarah", provider: "elevenlabs" },
                 name: "Georgia - Restaurant Receptionist",
-                firstMessage: "Hello! Welcome to Vincenzo Capuano restaurant. I'm Georgia, how can I help you today?",
+                firstMessage: "Hello! Welcome to  restaurant. I'm Georgia, how can I help you today?",
             },
         };
         const rawResponseBody = {
@@ -117,22 +115,21 @@ describe("Agents", () => {
             message: "message",
             timestamp: "2024-01-15T09:30:00Z",
             data: {
-                agent_id: "ec2b396d-58e0-96f8-89af-f35908a8b36",
+                agent_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                 agent_name: "Restaurant Receptionist",
                 agent_json: {
                     llm: {
                         model: "gpt-5",
                         systemPrompt:
-                            "# Role\nYou are Georgia, a friendly and professional receptionist at the Vincenzo Capuano restaurant.\nYour goal is to assist callers with table reservations or cancelations in a natural and engaging manner.\n\nRestaurant opening hours: 10 AM to 11 PM daily\nLocation: 24 Park Street\n\n# Tasks\n- Answer questions about the restaurant\n- Make table reservations\n- Cancel existing reservations\n- Provide information about menu and hours\n\n# Guidelines\n- Always be polite and professional\n- Confirm all reservation details\n- If you can't help, politely explain and offer alternatives\n",
+                            "# Role\nYou are Georgia, a friendly and professional receptionist at the  restaurant.\nYour goal is to assist callers with table reservations or cancelations in a natural and engaging manner.\n\nRestaurant opening hours: 10 AM to 11 PM daily\nLocation: 24 Park Street\n\n# Tasks\n- Answer questions about the restaurant\n- Make table reservations\n- Cancel existing reservations\n- Provide information about menu and hours\n\n# Guidelines\n- Always be polite and professional\n- Confirm all reservation details\n- If you can't help, politely explain and offer alternatives\n",
                         provider: "openai",
                     },
                     stt: { model: "nova-3", language: "en", provider: "deepgram" },
                     tts: { model: "eleven_multilingual_v2", voiceId: "sarah", provider: "elevenlabs" },
                     name: "Georgia - Restaurant Receptionist",
-                    firstMessage:
-                        "Hello! Welcome to Vincenzo Capuano restaurant. I'm Georgia, how can I help you today?",
+                    firstMessage: "Hello! Welcome to  restaurant. I'm Georgia, how can I help you today?",
                     webhookUrl: "https://api.restaurant.com/webhook/call-ended",
-                    callForwardNumber: "+1234567890",
+                    callForwardNumber: "+xxxxxxxxxx",
                     structuredDataSchema: { tags: ["tags"], call_type: "Reservation", call_summary: "call_summary" },
                 },
                 created_at: "2024-01-15T09:30:00Z",
@@ -155,7 +152,7 @@ describe("Agents", () => {
                     provider: "openai",
                     model: "gpt-5",
                     systemPrompt:
-                        "# Role\nYou are Georgia, a friendly and professional receptionist at the Vincenzo Capuano restaurant.\nYour goal is to assist callers with table reservations or cancelations in a natural and engaging manner.\n\nRestaurant opening hours: 10 AM to 11 PM daily\nLocation: 24 Park Street\n\n# Tasks\n- Answer questions about the restaurant\n- Make table reservations\n- Cancel existing reservations\n- Provide information about menu and hours\n\n# Guidelines\n- Always be polite and professional\n- Confirm all reservation details\n- If you can't help, politely explain and offer alternatives\n",
+                        "# Role\nYou are Georgia, a friendly and professional receptionist at the  restaurant.\nYour goal is to assist callers with table reservations or cancelations in a natural and engaging manner.\n\nRestaurant opening hours: 10 AM to 11 PM daily\nLocation: 24 Park Street\n\n# Tasks\n- Answer questions about the restaurant\n- Make table reservations\n- Cancel existing reservations\n- Provide information about menu and hours\n\n# Guidelines\n- Always be polite and professional\n- Confirm all reservation details\n- If you can't help, politely explain and offer alternatives\n",
                 },
                 stt: {
                     provider: "deepgram",
@@ -168,7 +165,7 @@ describe("Agents", () => {
                     voiceId: "sarah",
                 },
                 name: "Georgia - Restaurant Receptionist",
-                firstMessage: "Hello! Welcome to Vincenzo Capuano restaurant. I'm Georgia, how can I help you today?",
+                firstMessage: "Hello! Welcome to  restaurant. I'm Georgia, how can I help you today?",
             },
         });
         expect(response).toEqual({
@@ -176,14 +173,14 @@ describe("Agents", () => {
             message: "message",
             timestamp: "2024-01-15T09:30:00Z",
             data: {
-                agent_id: "ec2b396d-58e0-96f8-89af-f35908a8b36",
+                agent_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                 agent_name: "Restaurant Receptionist",
                 agent_json: {
                     llm: {
                         provider: "openai",
                         model: "gpt-5",
                         systemPrompt:
-                            "# Role\nYou are Georgia, a friendly and professional receptionist at the Vincenzo Capuano restaurant.\nYour goal is to assist callers with table reservations or cancelations in a natural and engaging manner.\n\nRestaurant opening hours: 10 AM to 11 PM daily\nLocation: 24 Park Street\n\n# Tasks\n- Answer questions about the restaurant\n- Make table reservations\n- Cancel existing reservations\n- Provide information about menu and hours\n\n# Guidelines\n- Always be polite and professional\n- Confirm all reservation details\n- If you can't help, politely explain and offer alternatives\n",
+                            "# Role\nYou are Georgia, a friendly and professional receptionist at the  restaurant.\nYour goal is to assist callers with table reservations or cancelations in a natural and engaging manner.\n\nRestaurant opening hours: 10 AM to 11 PM daily\nLocation: 24 Park Street\n\n# Tasks\n- Answer questions about the restaurant\n- Make table reservations\n- Cancel existing reservations\n- Provide information about menu and hours\n\n# Guidelines\n- Always be polite and professional\n- Confirm all reservation details\n- If you can't help, politely explain and offer alternatives\n",
                     },
                     stt: {
                         provider: "deepgram",
@@ -196,10 +193,9 @@ describe("Agents", () => {
                         voiceId: "sarah",
                     },
                     name: "Georgia - Restaurant Receptionist",
-                    firstMessage:
-                        "Hello! Welcome to Vincenzo Capuano restaurant. I'm Georgia, how can I help you today?",
+                    firstMessage: "Hello! Welcome to  restaurant. I'm Georgia, how can I help you today?",
                     webhookUrl: "https://api.restaurant.com/webhook/call-ended",
-                    callForwardNumber: "+1234567890",
+                    callForwardNumber: "+xxxxxxxxxx",
                     structuredDataSchema: {
                         tags: ["tags"],
                         call_type: "Reservation",
@@ -221,22 +217,21 @@ describe("Agents", () => {
             message: "message",
             timestamp: "2024-01-15T09:30:00Z",
             data: {
-                agent_id: "ec2b396d-58e0-96f8-89af-f35908a8b36",
+                agent_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                 agent_name: "Restaurant Receptionist",
                 agent_json: {
                     llm: {
                         model: "gpt-5",
                         systemPrompt:
-                            "# Role\nYou are Georgia, a friendly and professional receptionist at the Vincenzo Capuano restaurant.\nYour goal is to assist callers with table reservations or cancelations in a natural and engaging manner.\n\nRestaurant opening hours: 10 AM to 11 PM daily\nLocation: 24 Park Street\n\n# Tasks\n- Answer questions about the restaurant\n- Make table reservations\n- Cancel existing reservations\n- Provide information about menu and hours\n\n# Guidelines\n- Always be polite and professional\n- Confirm all reservation details\n- If you can't help, politely explain and offer alternatives\n",
+                            "# Role\nYou are Georgia, a friendly and professional receptionist at the  restaurant.\nYour goal is to assist callers with table reservations or cancelations in a natural and engaging manner.\n\nRestaurant opening hours: 10 AM to 11 PM daily\nLocation: 24 Park Street\n\n# Tasks\n- Answer questions about the restaurant\n- Make table reservations\n- Cancel existing reservations\n- Provide information about menu and hours\n\n# Guidelines\n- Always be polite and professional\n- Confirm all reservation details\n- If you can't help, politely explain and offer alternatives\n",
                         provider: "openai",
                     },
                     stt: { model: "nova-3", language: "en", provider: "deepgram" },
                     tts: { model: "eleven_multilingual_v2", voiceId: "sarah", provider: "elevenlabs" },
                     name: "Georgia - Restaurant Receptionist",
-                    firstMessage:
-                        "Hello! Welcome to Vincenzo Capuano restaurant. I'm Georgia, how can I help you today?",
+                    firstMessage: "Hello! Welcome to  restaurant. I'm Georgia, how can I help you today?",
                     webhookUrl: "https://api.restaurant.com/webhook/call-ended",
-                    callForwardNumber: "+1234567890",
+                    callForwardNumber: "+xxxxxxxxxx",
                     structuredDataSchema: { tags: ["tags"], call_type: "Reservation", call_summary: "call_summary" },
                 },
                 created_at: "2024-01-15T09:30:00Z",
@@ -244,47 +239,46 @@ describe("Agents", () => {
                 assets: [
                     {
                         pk_asset_id: 123,
-                        fk_agent_id: "ec2b396d-58e0-96f8-89af-f35908a8b36",
+                        fk_agent_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                         title: "Product Documentation v2.1",
                         date_created: "2025-01-15T10:30:00Z",
                         is_active: true,
                         chunk_count: 23,
                     },
                 ],
-                phones: [{ pk_phone_id: "phone_abc123def456", phone_number: "+1234567890", provider: "twilio" }],
+                phones: [{ pk_phone_id: "phone_abc123def456", phone_number: "+xxxxxxxxxx", provider: "twilio" }],
                 tools: [
                     {
                         pk_tool_id: "tool_123abc456def",
                         tool_name: "make_reservation",
                         tool_description: "Creates a new restaurant reservation with specified details",
-                        tool_endpoint: "https://api.restaurant.com/reservations",
-                        tool_headers: { "Content-Type": "application/json", Authorization: "Bearer token123" },
+                        server_url: "https://api.restaurant.com/reservations",
                     },
                 ],
             },
         };
         server
             .mockEndpoint()
-            .get("/api/developer/agents/ec2b396d-58e0-96f8-89af-f35908a8b36")
+            .get("/api/developer/agents/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.agents.getAgent("ec2b396d-58e0-96f8-89af-f35908a8b36");
+        const response = await client.agents.getAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx");
         expect(response).toEqual({
             success: true,
             message: "message",
             timestamp: "2024-01-15T09:30:00Z",
             data: {
-                agent_id: "ec2b396d-58e0-96f8-89af-f35908a8b36",
+                agent_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                 agent_name: "Restaurant Receptionist",
                 agent_json: {
                     llm: {
                         provider: "openai",
                         model: "gpt-5",
                         systemPrompt:
-                            "# Role\nYou are Georgia, a friendly and professional receptionist at the Vincenzo Capuano restaurant.\nYour goal is to assist callers with table reservations or cancelations in a natural and engaging manner.\n\nRestaurant opening hours: 10 AM to 11 PM daily\nLocation: 24 Park Street\n\n# Tasks\n- Answer questions about the restaurant\n- Make table reservations\n- Cancel existing reservations\n- Provide information about menu and hours\n\n# Guidelines\n- Always be polite and professional\n- Confirm all reservation details\n- If you can't help, politely explain and offer alternatives\n",
+                            "# Role\nYou are Georgia, a friendly and professional receptionist at the  restaurant.\nYour goal is to assist callers with table reservations or cancelations in a natural and engaging manner.\n\nRestaurant opening hours: 10 AM to 11 PM daily\nLocation: 24 Park Street\n\n# Tasks\n- Answer questions about the restaurant\n- Make table reservations\n- Cancel existing reservations\n- Provide information about menu and hours\n\n# Guidelines\n- Always be polite and professional\n- Confirm all reservation details\n- If you can't help, politely explain and offer alternatives\n",
                     },
                     stt: {
                         provider: "deepgram",
@@ -297,10 +291,9 @@ describe("Agents", () => {
                         voiceId: "sarah",
                     },
                     name: "Georgia - Restaurant Receptionist",
-                    firstMessage:
-                        "Hello! Welcome to Vincenzo Capuano restaurant. I'm Georgia, how can I help you today?",
+                    firstMessage: "Hello! Welcome to  restaurant. I'm Georgia, how can I help you today?",
                     webhookUrl: "https://api.restaurant.com/webhook/call-ended",
-                    callForwardNumber: "+1234567890",
+                    callForwardNumber: "+xxxxxxxxxx",
                     structuredDataSchema: {
                         tags: ["tags"],
                         call_type: "Reservation",
@@ -312,7 +305,7 @@ describe("Agents", () => {
                 assets: [
                     {
                         pk_asset_id: 123,
-                        fk_agent_id: "ec2b396d-58e0-96f8-89af-f35908a8b36",
+                        fk_agent_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                         title: "Product Documentation v2.1",
                         date_created: "2025-01-15T10:30:00Z",
                         is_active: true,
@@ -322,7 +315,7 @@ describe("Agents", () => {
                 phones: [
                     {
                         pk_phone_id: "phone_abc123def456",
-                        phone_number: "+1234567890",
+                        phone_number: "+xxxxxxxxxx",
                         provider: "twilio",
                     },
                 ],
@@ -331,11 +324,7 @@ describe("Agents", () => {
                         pk_tool_id: "tool_123abc456def",
                         tool_name: "make_reservation",
                         tool_description: "Creates a new restaurant reservation with specified details",
-                        tool_endpoint: "https://api.restaurant.com/reservations",
-                        tool_headers: {
-                            "Content-Type": "application/json",
-                            Authorization: "Bearer token123",
-                        },
+                        server_url: "https://api.restaurant.com/reservations",
                     },
                 ],
             },
@@ -351,22 +340,21 @@ describe("Agents", () => {
             message: "message",
             timestamp: "2024-01-15T09:30:00Z",
             data: {
-                agent_id: "ec2b396d-58e0-96f8-89af-f35908a8b36",
+                agent_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                 agent_name: "Restaurant Receptionist",
                 agent_json: {
                     llm: {
                         model: "gpt-5",
                         systemPrompt:
-                            "# Role\nYou are Georgia, a friendly and professional receptionist at the Vincenzo Capuano restaurant.\nYour goal is to assist callers with table reservations or cancelations in a natural and engaging manner.\n\nRestaurant opening hours: 10 AM to 11 PM daily\nLocation: 24 Park Street\n\n# Tasks\n- Answer questions about the restaurant\n- Make table reservations\n- Cancel existing reservations\n- Provide information about menu and hours\n\n# Guidelines\n- Always be polite and professional\n- Confirm all reservation details\n- If you can't help, politely explain and offer alternatives\n",
+                            "# Role\nYou are Georgia, a friendly and professional receptionist at the  restaurant.\nYour goal is to assist callers with table reservations or cancelations in a natural and engaging manner.\n\nRestaurant opening hours: 10 AM to 11 PM daily\nLocation: 24 Park Street\n\n# Tasks\n- Answer questions about the restaurant\n- Make table reservations\n- Cancel existing reservations\n- Provide information about menu and hours\n\n# Guidelines\n- Always be polite and professional\n- Confirm all reservation details\n- If you can't help, politely explain and offer alternatives\n",
                         provider: "openai",
                     },
                     stt: { model: "nova-3", language: "en", provider: "deepgram" },
                     tts: { model: "eleven_multilingual_v2", voiceId: "sarah", provider: "elevenlabs" },
                     name: "Georgia - Restaurant Receptionist",
-                    firstMessage:
-                        "Hello! Welcome to Vincenzo Capuano restaurant. I'm Georgia, how can I help you today?",
+                    firstMessage: "Hello! Welcome to  restaurant. I'm Georgia, how can I help you today?",
                     webhookUrl: "https://api.restaurant.com/webhook/call-ended",
-                    callForwardNumber: "+1234567890",
+                    callForwardNumber: "+xxxxxxxxxx",
                     structuredDataSchema: { tags: ["tags"], call_type: "Reservation", call_summary: "call_summary" },
                 },
                 created_at: "2024-01-15T09:30:00Z",
@@ -375,27 +363,27 @@ describe("Agents", () => {
         };
         server
             .mockEndpoint()
-            .put("/api/developer/agents/ec2b396d-58e0-96f8-89af-f35908a8b36")
+            .put("/api/developer/agents/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.agents.updateAgent("ec2b396d-58e0-96f8-89af-f35908a8b36");
+        const response = await client.agents.updateAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx");
         expect(response).toEqual({
             success: true,
             message: "message",
             timestamp: "2024-01-15T09:30:00Z",
             data: {
-                agent_id: "ec2b396d-58e0-96f8-89af-f35908a8b36",
+                agent_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                 agent_name: "Restaurant Receptionist",
                 agent_json: {
                     llm: {
                         provider: "openai",
                         model: "gpt-5",
                         systemPrompt:
-                            "# Role\nYou are Georgia, a friendly and professional receptionist at the Vincenzo Capuano restaurant.\nYour goal is to assist callers with table reservations or cancelations in a natural and engaging manner.\n\nRestaurant opening hours: 10 AM to 11 PM daily\nLocation: 24 Park Street\n\n# Tasks\n- Answer questions about the restaurant\n- Make table reservations\n- Cancel existing reservations\n- Provide information about menu and hours\n\n# Guidelines\n- Always be polite and professional\n- Confirm all reservation details\n- If you can't help, politely explain and offer alternatives\n",
+                            "# Role\nYou are Georgia, a friendly and professional receptionist at the  restaurant.\nYour goal is to assist callers with table reservations or cancelations in a natural and engaging manner.\n\nRestaurant opening hours: 10 AM to 11 PM daily\nLocation: 24 Park Street\n\n# Tasks\n- Answer questions about the restaurant\n- Make table reservations\n- Cancel existing reservations\n- Provide information about menu and hours\n\n# Guidelines\n- Always be polite and professional\n- Confirm all reservation details\n- If you can't help, politely explain and offer alternatives\n",
                     },
                     stt: {
                         provider: "deepgram",
@@ -408,10 +396,9 @@ describe("Agents", () => {
                         voiceId: "sarah",
                     },
                     name: "Georgia - Restaurant Receptionist",
-                    firstMessage:
-                        "Hello! Welcome to Vincenzo Capuano restaurant. I'm Georgia, how can I help you today?",
+                    firstMessage: "Hello! Welcome to  restaurant. I'm Georgia, how can I help you today?",
                     webhookUrl: "https://api.restaurant.com/webhook/call-ended",
-                    callForwardNumber: "+1234567890",
+                    callForwardNumber: "+xxxxxxxxxx",
                     structuredDataSchema: {
                         tags: ["tags"],
                         call_type: "Reservation",
@@ -431,13 +418,13 @@ describe("Agents", () => {
         const rawResponseBody = { success: true, message: "message", timestamp: "2024-01-15T09:30:00Z" };
         server
             .mockEndpoint()
-            .delete("/api/developer/agents/ec2b396d-58e0-96f8-89af-f35908a8b36")
+            .delete("/api/developer/agents/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.agents.deleteAgent("ec2b396d-58e0-96f8-89af-f35908a8b36");
+        const response = await client.agents.deleteAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx");
         expect(response).toEqual({
             success: true,
             message: "message",
@@ -459,9 +446,7 @@ describe("Agents", () => {
                     pk_tool_id: "tool_123abc456def",
                     tool_name: "make_reservation",
                     tool_description: "Creates a new restaurant reservation with specified details",
-                    tool_endpoint: "https://api.restaurant.com/reservations",
-                    tool_method: "GET",
-                    tool_headers: { "Content-Type": "application/json", Authorization: "Bearer token123" },
+                    server_url: "https://api.restaurant.com/reservations",
                     parameters: [
                         {
                             param_name: "reservation_date",
@@ -476,13 +461,13 @@ describe("Agents", () => {
         };
         server
             .mockEndpoint()
-            .get("/api/developer/agents/ec2b396d-58e0-96f8-89af-f35908a8b36/tools")
+            .get("/api/developer/agents/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/tools")
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.agents.getAgentTools("ec2b396d-58e0-96f8-89af-f35908a8b36");
+        const response = await client.agents.getAgentTools("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx");
         expect(response).toEqual({
             success: true,
             message: "message",
@@ -500,12 +485,7 @@ describe("Agents", () => {
                     pk_tool_id: "tool_123abc456def",
                     tool_name: "make_reservation",
                     tool_description: "Creates a new restaurant reservation with specified details",
-                    tool_endpoint: "https://api.restaurant.com/reservations",
-                    tool_method: "GET",
-                    tool_headers: {
-                        "Content-Type": "application/json",
-                        Authorization: "Bearer token123",
-                    },
+                    server_url: "https://api.restaurant.com/reservations",
                     parameters: [
                         {
                             param_name: "reservation_date",
@@ -527,14 +507,14 @@ describe("Agents", () => {
         const rawResponseBody = { success: true, message: "message", timestamp: "2024-01-15T09:30:00Z" };
         server
             .mockEndpoint()
-            .post("/api/developer/agents/ec2b396d-58e0-96f8-89af-f35908a8b36/tools")
+            .post("/api/developer/agents/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/tools")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.agents.assignToolToAgent("ec2b396d-58e0-96f8-89af-f35908a8b36", {
+        const response = await client.agents.assignToolToAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", {
             toolId: "tool_123abc456def",
         });
         expect(response).toEqual({
@@ -551,14 +531,14 @@ describe("Agents", () => {
         const rawResponseBody = { success: true, message: "message", timestamp: "2024-01-15T09:30:00Z" };
         server
             .mockEndpoint()
-            .delete("/api/developer/agents/ec2b396d-58e0-96f8-89af-f35908a8b36/tools")
+            .delete("/api/developer/agents/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/tools")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.agents.unassignToolFromAgent("ec2b396d-58e0-96f8-89af-f35908a8b36", {
+        const response = await client.agents.unassignToolFromAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", {
             toolId: "toolId",
         });
         expect(response).toEqual({

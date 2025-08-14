@@ -5,7 +5,7 @@
 /**
  * @example
  *     {
- *         agentId: "ec2b396d-58e0-96f8-89af-f35908a8b36",
+ *         agentId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
  *         toNumber: "+919831222222"
  *     }
  */

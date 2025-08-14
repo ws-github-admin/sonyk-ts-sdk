@@ -18,7 +18,7 @@ describe("Assets", () => {
             data: [
                 {
                     pk_asset_id: 123,
-                    fk_agent_id: "ec2b396d-58e0-96f8-89af-f35908a8b36",
+                    fk_agent_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                     type: "FILE",
                     title: "Product Documentation v2.1",
                     url: "gs://sonyk-bucket/assets/agent_123/456/text.txt",
@@ -31,13 +31,13 @@ describe("Assets", () => {
         };
         server
             .mockEndpoint()
-            .get("/api/developer/assets/ec2b396d-58e0-96f8-89af-f35908a8b36")
+            .get("/api/developer/assets/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.assets.listAgentAssets("ec2b396d-58e0-96f8-89af-f35908a8b36", {
+        const response = await client.assets.listAgentAssets("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", {
             search: "product documentation",
         });
         expect(response).toEqual({
@@ -55,7 +55,7 @@ describe("Assets", () => {
             data: [
                 {
                     pk_asset_id: 123,
-                    fk_agent_id: "ec2b396d-58e0-96f8-89af-f35908a8b36",
+                    fk_agent_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                     type: "FILE",
                     title: "Product Documentation v2.1",
                     url: "gs://sonyk-bucket/assets/agent_123/456/text.txt",
@@ -78,7 +78,7 @@ describe("Assets", () => {
             timestamp: "2024-01-15T09:30:00Z",
             data: {
                 pk_asset_id: 123,
-                fk_agent_id: "ec2b396d-58e0-96f8-89af-f35908a8b36",
+                fk_agent_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                 type: "FILE",
                 title: "Product Documentation v2.1",
                 url: "gs://sonyk-bucket/assets/agent_123/456/text.txt",
@@ -99,20 +99,20 @@ describe("Assets", () => {
         };
         server
             .mockEndpoint()
-            .get("/api/developer/assets/ec2b396d-58e0-96f8-89af-f35908a8b36/4567")
+            .get("/api/developer/assets/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/4567")
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.assets.getAgentAssetDetails("ec2b396d-58e0-96f8-89af-f35908a8b36", 4567);
+        const response = await client.assets.getAgentAssetDetails("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", 4567);
         expect(response).toEqual({
             success: true,
             message: "message",
             timestamp: "2024-01-15T09:30:00Z",
             data: {
                 pk_asset_id: 123,
-                fk_agent_id: "ec2b396d-58e0-96f8-89af-f35908a8b36",
+                fk_agent_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                 type: "FILE",
                 title: "Product Documentation v2.1",
                 url: "gs://sonyk-bucket/assets/agent_123/456/text.txt",
@@ -149,14 +149,14 @@ describe("Assets", () => {
         };
         server
             .mockEndpoint()
-            .put("/api/developer/assets/ec2b396d-58e0-96f8-89af-f35908a8b36/4569")
+            .put("/api/developer/assets/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/4569")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.assets.updateAgentAsset("ec2b396d-58e0-96f8-89af-f35908a8b36", 4569);
+        const response = await client.assets.updateAgentAsset("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", 4569);
         expect(response).toEqual({
             success: true,
             message: "message",
@@ -179,13 +179,13 @@ describe("Assets", () => {
         };
         server
             .mockEndpoint()
-            .delete("/api/developer/assets/ec2b396d-58e0-96f8-89af-f35908a8b36/4369")
+            .delete("/api/developer/assets/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/4369")
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.assets.deleteAgentAsset("ec2b396d-58e0-96f8-89af-f35908a8b36", 4369);
+        const response = await client.assets.deleteAgentAsset("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", 4369);
         expect(response).toEqual({
             success: true,
             message: "message",
@@ -224,14 +224,14 @@ describe("Assets", () => {
         };
         server
             .mockEndpoint()
-            .post("/api/developer/assets/ec2b396d-58e0-96f8-89af-f35908a8b36/text")
+            .post("/api/developer/assets/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/text")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.assets.createAgentTextAsset("ec2b396d-58e0-96f8-89af-f35908a8b36", {
+        const response = await client.assets.createAgentTextAsset("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", {
             text: "# Customer Service FAQ - Updated January 2025\n\n## Business Information\n\n### Q: What are your business hours?\nA: We are open Monday to Friday from 9 AM to 6 PM EST. Weekend support is available via email only.\n\n### Q: Where are you located?\nA: Our headquarters is at 123 Business St, City, State 12345. We also have locations in Chicago and Miami.\n\n## Product Support\n\n### Q: How do I return a product?\nA: Returns are easy! Visit our website's return portal, print a shipping label, and send the item back within 30 days. Refunds are processed within 5-7 business days.\n\n### Q: What's your warranty policy?\nA: All products come with a standard 1-year warranty. Extended warranties up to 3 years are available for purchase.\n\n## Account Management\n\n### Q: How do I reset my password?\nA: Click 'Forgot Password' on the login page, enter your email, and follow the instructions sent to your inbox. The reset link expires in 24 hours.\n\n### Q: Can I change my subscription plan?\nA: Yes! Log into your account, go to Settings > Subscription, and select your new plan. Changes take effect immediately.\n",
         });
         expect(response).toEqual({
@@ -276,13 +276,13 @@ describe("Assets", () => {
         };
         server
             .mockEndpoint()
-            .get("/api/developer/assets/ec2b396d-58e0-96f8-89af-f35908a8b36/3478/content")
+            .get("/api/developer/assets/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/3478/content")
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.assets.getAgentAssetContent("ec2b396d-58e0-96f8-89af-f35908a8b36", 3478);
+        const response = await client.assets.getAgentAssetContent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", 3478);
         expect(response).toEqual({
             success: true,
             message: "message",
@@ -345,14 +345,14 @@ describe("Assets", () => {
         };
         server
             .mockEndpoint()
-            .post("/api/developer/assets/ec2b396d-58e0-96f8-89af-f35908a8b36/search")
+            .post("/api/developer/assets/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/search")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.assets.searchAgentAssets("ec2b396d-58e0-96f8-89af-f35908a8b36", {
+        const response = await client.assets.searchAgentAssets("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", {
             query: "How do I reset my password?",
         });
         expect(response).toEqual({
