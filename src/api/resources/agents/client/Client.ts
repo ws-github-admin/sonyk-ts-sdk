@@ -507,7 +507,7 @@ export class Agents {
      *
      * @example
      *     await client.agents.assignToolToAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", {
-     *         toolId: "tool_123abc456def"
+     *         toolId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"
      *     })
      */
     public assignToolToAgent(

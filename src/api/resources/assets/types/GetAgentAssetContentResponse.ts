@@ -11,7 +11,7 @@ export interface GetAgentAssetContentResponse extends Sonyk.BaseResponse {
 export namespace GetAgentAssetContentResponse {
     export interface Data {
         /** Asset identifier */
-        assetId?: number;
+        assetId?: string;
         /** Asset title */
         title?: string;
         /** Type of asset */

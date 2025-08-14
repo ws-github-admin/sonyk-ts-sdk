@@ -11,7 +11,7 @@ export interface UploadAgentAssetResponse extends Sonyk.BaseResponse {
 export namespace UploadAgentAssetResponse {
     export interface Data {
         /** Unique identifier for the created asset */
-        assetId?: number;
+        assetId?: string;
         /** Final title of the asset */
         title?: string;
         /** Asset type (always FILE for uploads) */

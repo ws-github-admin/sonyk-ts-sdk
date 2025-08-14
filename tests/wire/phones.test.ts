@@ -142,13 +142,13 @@ describe("Phones", () => {
         };
         server
             .mockEndpoint()
-            .get("/api/developer/phones/12da7cbd-94a4-4a45-b312-98a5sa1f5124")
+            .get("/api/developer/phones/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.phones.getPhone("12da7cbd-94a4-4a45-b312-98a5sa1f5124");
+        const response = await client.phones.getPhone("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx");
         expect(response).toEqual({
             success: true,
             message: "message",
@@ -192,14 +192,14 @@ describe("Phones", () => {
         };
         server
             .mockEndpoint()
-            .put("/api/developer/phones/12da7cbd-94a4-4a45-b312-98a5sa1f5124")
+            .put("/api/developer/phones/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.phones.updatePhone("12da7cbd-94a4-4a45-b312-98a5sa1f5124");
+        const response = await client.phones.updatePhone("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx");
         expect(response).toEqual({
             success: true,
             message: "message",
@@ -228,13 +228,13 @@ describe("Phones", () => {
         const rawResponseBody = { success: true, message: "message", timestamp: "2024-01-15T09:30:00Z" };
         server
             .mockEndpoint()
-            .delete("/api/developer/phones/12da7cbd-94a4-4a45-b312-98a5sa1f5124")
+            .delete("/api/developer/phones/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.phones.deletePhone("12da7cbd-94a4-4a45-b312-98a5sa1f5124");
+        const response = await client.phones.deletePhone("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx");
         expect(response).toEqual({
             success: true,
             message: "message",
@@ -264,14 +264,14 @@ describe("Phones", () => {
         };
         server
             .mockEndpoint()
-            .post("/api/developer/phones/12da7cbd-94a4-4a45-b312-98a5sa1f5124/map-agent")
+            .post("/api/developer/phones/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/map-agent")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.phones.mapPhoneToAgent("12da7cbd-94a4-4a45-b312-98a5sa1f5124", {
+        const response = await client.phones.mapPhoneToAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", {
             agentId: "agentId",
         });
         expect(response).toEqual({
@@ -317,13 +317,13 @@ describe("Phones", () => {
         };
         server
             .mockEndpoint()
-            .post("/api/developer/phones/12da7cbd-94a4-4a45-b312-98a5sa1f5124/unmap-agent")
+            .post("/api/developer/phones/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/unmap-agent")
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.phones.unmapPhoneFromAgent("12da7cbd-94a4-4a45-b312-98a5sa1f5124");
+        const response = await client.phones.unmapPhoneFromAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx");
         expect(response).toEqual({
             success: true,
             message: "message",

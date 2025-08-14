@@ -190,17 +190,17 @@ export class Assets {
      * - Text sanitization and enhancement applied
      *
      * @param {string} agentId
-     * @param {number} assetId
+     * @param {string} assetId
      * @param {Assets.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Sonyk.NotFoundError}
      *
      * @example
-     *     await client.assets.getAgentAssetDetails("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", 4567)
+     *     await client.assets.getAgentAssetDetails("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
      */
     public getAgentAssetDetails(
         agentId: string,
-        assetId: number,
+        assetId: string,
         requestOptions?: Assets.RequestOptions,
     ): core.HttpResponsePromise<Sonyk.AssetDetailedResponse> {
         return core.HttpResponsePromise.fromPromise(this.__getAgentAssetDetails(agentId, assetId, requestOptions));
@@ -208,7 +208,7 @@ export class Assets {
 
     private async __getAgentAssetDetails(
         agentId: string,
-        assetId: number,
+        assetId: string,
         requestOptions?: Assets.RequestOptions,
     ): Promise<core.WithRawResponse<Sonyk.AssetDetailedResponse>> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -286,18 +286,18 @@ export class Assets {
      * - Agent has access to updated information within seconds
      *
      * @param {string} agentId
-     * @param {number} assetId
+     * @param {string} assetId
      * @param {Sonyk.UpdateAgentAssetRequest} request
      * @param {Assets.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Sonyk.BadRequestError}
      *
      * @example
-     *     await client.assets.updateAgentAsset("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", 4569)
+     *     await client.assets.updateAgentAsset("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
      */
     public updateAgentAsset(
         agentId: string,
-        assetId: number,
+        assetId: string,
         request: Sonyk.UpdateAgentAssetRequest = {},
         requestOptions?: Assets.RequestOptions,
     ): core.HttpResponsePromise<Sonyk.UpdateAgentAssetResponse> {
@@ -306,7 +306,7 @@ export class Assets {
 
     private async __updateAgentAsset(
         agentId: string,
-        assetId: number,
+        assetId: string,
         request: Sonyk.UpdateAgentAssetRequest = {},
         requestOptions?: Assets.RequestOptions,
     ): Promise<core.WithRawResponse<Sonyk.UpdateAgentAssetResponse>> {
@@ -389,15 +389,15 @@ export class Assets {
      * - Maintain backups of important content outside the system
      *
      * @param {string} agentId
-     * @param {number} assetId
+     * @param {string} assetId
      * @param {Assets.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.assets.deleteAgentAsset("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", 4369)
+     *     await client.assets.deleteAgentAsset("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
      */
     public deleteAgentAsset(
         agentId: string,
-        assetId: number,
+        assetId: string,
         requestOptions?: Assets.RequestOptions,
     ): core.HttpResponsePromise<Sonyk.DeleteAgentAssetResponse> {
         return core.HttpResponsePromise.fromPromise(this.__deleteAgentAsset(agentId, assetId, requestOptions));
@@ -405,7 +405,7 @@ export class Assets {
 
     private async __deleteAgentAsset(
         agentId: string,
-        assetId: number,
+        assetId: string,
         requestOptions?: Assets.RequestOptions,
     ): Promise<core.WithRawResponse<Sonyk.DeleteAgentAssetResponse>> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -851,17 +851,17 @@ export class Assets {
      * - **Processing Status**: Information about how the content was processed
      *
      * @param {string} agentId
-     * @param {number} assetId
+     * @param {string} assetId
      * @param {Assets.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Sonyk.NotFoundError}
      *
      * @example
-     *     await client.assets.getAgentAssetContent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", 3478)
+     *     await client.assets.getAgentAssetContent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
      */
     public getAgentAssetContent(
         agentId: string,
-        assetId: number,
+        assetId: string,
         requestOptions?: Assets.RequestOptions,
     ): core.HttpResponsePromise<Sonyk.GetAgentAssetContentResponse> {
         return core.HttpResponsePromise.fromPromise(this.__getAgentAssetContent(agentId, assetId, requestOptions));
@@ -869,7 +869,7 @@ export class Assets {
 
     private async __getAgentAssetContent(
         agentId: string,
-        assetId: number,
+        assetId: string,
         requestOptions?: Assets.RequestOptions,
     ): Promise<core.WithRawResponse<Sonyk.GetAgentAssetContentResponse>> {
         const _response = await (this._options.fetcher ?? core.fetcher)({

@@ -11,7 +11,7 @@ export interface CreateAgentTextAssetResponse extends Sonyk.BaseResponse {
 export namespace CreateAgentTextAssetResponse {
     export interface Data {
         /** Unique identifier for the created asset */
-        assetId?: number;
+        assetId?: string;
         /** Title of the created asset */
         title?: string;
         /** Asset type (always TEXT for text assets) */

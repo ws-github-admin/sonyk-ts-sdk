@@ -27,7 +27,7 @@ export namespace SearchAgentAssetsResponse {
                 /** Unique identifier for the text chunk */
                 pk_chunk_id?: number;
                 /** ID of the asset containing this chunk */
-                fk_asset_id?: number;
+                fk_asset_id?: string;
                 /** The relevant text content */
                 chunk_text?: string;
                 chunk_type?: Item.ChunkType;

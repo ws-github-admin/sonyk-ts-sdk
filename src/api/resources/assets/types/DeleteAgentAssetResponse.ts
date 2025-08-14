@@ -11,7 +11,7 @@ export interface DeleteAgentAssetResponse extends Sonyk.SuccessResponse {
 export namespace DeleteAgentAssetResponse {
     export interface Data {
         /** ID of the deleted asset */
-        assetId?: number;
+        assetId?: string;
         /** Number of text chunks removed from search database */
         chunksRemoved?: number;
     }

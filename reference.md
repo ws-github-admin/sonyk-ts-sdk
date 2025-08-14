@@ -440,7 +440,7 @@ Assign an existing tool to an agent
 
 ```typescript
 await client.agents.assignToolToAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", {
-    toolId: "tool_123abc456def",
+    toolId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
 });
 ```
 
@@ -718,7 +718,7 @@ Retrieve a specific phone by ID
 <dd>
 
 ```typescript
-await client.phones.getPhone("12da7cbd-94a4-4a45-b312-98a5sa1f5124");
+await client.phones.getPhone("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx");
 ```
 
 </dd>
@@ -781,7 +781,7 @@ Update phone details or agent assignment
 <dd>
 
 ```typescript
-await client.phones.updatePhone("12da7cbd-94a4-4a45-b312-98a5sa1f5124");
+await client.phones.updatePhone("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx");
 ```
 
 </dd>
@@ -852,7 +852,7 @@ Deactivate a phone number
 <dd>
 
 ```typescript
-await client.phones.deletePhone("12da7cbd-94a4-4a45-b312-98a5sa1f5124");
+await client.phones.deletePhone("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx");
 ```
 
 </dd>
@@ -915,7 +915,7 @@ Assign a phone number to a specific agent
 <dd>
 
 ```typescript
-await client.phones.mapPhoneToAgent("12da7cbd-94a4-4a45-b312-98a5sa1f5124", {
+await client.phones.mapPhoneToAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", {
     agentId: "agentId",
 });
 ```
@@ -988,7 +988,7 @@ Remove agent assignment from a phone number
 <dd>
 
 ```typescript
-await client.phones.unmapPhoneFromAgent("12da7cbd-94a4-4a45-b312-98a5sa1f5124");
+await client.phones.unmapPhoneFromAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx");
 ```
 
 </dd>
@@ -1502,7 +1502,7 @@ The response includes details about how the asset was processed:
 <dd>
 
 ```typescript
-await client.assets.getAgentAssetDetails("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", 4567);
+await client.assets.getAgentAssetDetails("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx");
 ```
 
 </dd>
@@ -1526,7 +1526,7 @@ await client.assets.getAgentAssetDetails("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", 
 <dl>
 <dd>
 
-**assetId:** `number`
+**assetId:** `string`
 
 </dd>
 </dl>
@@ -1593,7 +1593,7 @@ When text content is updated:
 <dd>
 
 ```typescript
-await client.assets.updateAgentAsset("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", 4569);
+await client.assets.updateAgentAsset("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx");
 ```
 
 </dd>
@@ -1617,7 +1617,7 @@ await client.assets.updateAgentAsset("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", 4569
 <dl>
 <dd>
 
-**assetId:** `number`
+**assetId:** `string`
 
 </dd>
 </dl>
@@ -1692,7 +1692,7 @@ Permanently delete an asset from the agent's knowledge base.
 <dd>
 
 ```typescript
-await client.assets.deleteAgentAsset("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", 4369);
+await client.assets.deleteAgentAsset("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx");
 ```
 
 </dd>
@@ -1716,7 +1716,7 @@ await client.assets.deleteAgentAsset("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", 4369
 <dl>
 <dd>
 
-**assetId:** `number`
+**assetId:** `string`
 
 </dd>
 </dl>
@@ -2138,7 +2138,7 @@ The response includes both the content and useful metadata:
 <dd>
 
 ```typescript
-await client.assets.getAgentAssetContent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", 3478);
+await client.assets.getAgentAssetContent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx");
 ```
 
 </dd>
@@ -2162,7 +2162,7 @@ await client.assets.getAgentAssetContent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", 
 <dl>
 <dd>
 
-**assetId:** `number`
+**assetId:** `string`
 
 </dd>
 </dl>
@@ -2367,7 +2367,9 @@ Validates permissions and credits, then forwards request to core.sonyk.io.
 ```typescript
 await client.calls.initiateCall({
     agentId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
-    toNumber: "+919831222222",
+    toNumber: "+xxxxxxxxxx",
+    twilioSid: "ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    twilioToken: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
 });
 ```
 

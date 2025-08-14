@@ -4,7 +4,7 @@
 
 export interface Asset {
     /** Unique asset identifier */
-    pk_asset_id?: number;
+    pk_asset_id?: string;
     /** ID of the agent this asset belongs to */
     fk_agent_id?: string;
     /**

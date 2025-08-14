@@ -5,7 +5,7 @@
 /**
  * @example
  *     {
- *         toolId: "tool_123abc456def"
+ *         toolId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"
  *     }
  */
 export interface AssignToolToAgentRequest {

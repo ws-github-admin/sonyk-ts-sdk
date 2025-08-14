@@ -238,7 +238,7 @@ describe("Agents", () => {
                 fk_org_id: 1,
                 assets: [
                     {
-                        pk_asset_id: 123,
+                        pk_asset_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                         fk_agent_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                         title: "Product Documentation v2.1",
                         date_created: "2025-01-15T10:30:00Z",
@@ -304,7 +304,7 @@ describe("Agents", () => {
                 fk_org_id: 1,
                 assets: [
                     {
-                        pk_asset_id: 123,
+                        pk_asset_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                         fk_agent_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                         title: "Product Documentation v2.1",
                         date_created: "2025-01-15T10:30:00Z",
@@ -503,7 +503,7 @@ describe("Agents", () => {
     test("assignToolToAgent", async () => {
         const server = mockServerPool.createServer();
         const client = new SonykClient({ apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = { toolId: "tool_123abc456def" };
+        const rawRequestBody = { toolId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx" };
         const rawResponseBody = { success: true, message: "message", timestamp: "2024-01-15T09:30:00Z" };
         server
             .mockEndpoint()
@@ -515,7 +515,7 @@ describe("Agents", () => {
             .build();
 
         const response = await client.agents.assignToolToAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", {
-            toolId: "tool_123abc456def",
+            toolId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
         });
         expect(response).toEqual({
             success: true,

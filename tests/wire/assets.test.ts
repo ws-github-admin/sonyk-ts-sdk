@@ -17,7 +17,7 @@ describe("Assets", () => {
             meta: { pagination: { currentPage: 1, totalPages: 1, totalItems: 1, itemsPerPage: 1 } },
             data: [
                 {
-                    pk_asset_id: 123,
+                    pk_asset_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                     fk_agent_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                     type: "FILE",
                     title: "Product Documentation v2.1",
@@ -54,7 +54,7 @@ describe("Assets", () => {
             },
             data: [
                 {
-                    pk_asset_id: 123,
+                    pk_asset_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                     fk_agent_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                     type: "FILE",
                     title: "Product Documentation v2.1",
@@ -77,7 +77,7 @@ describe("Assets", () => {
             message: "message",
             timestamp: "2024-01-15T09:30:00Z",
             data: {
-                pk_asset_id: 123,
+                pk_asset_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                 fk_agent_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                 type: "FILE",
                 title: "Product Documentation v2.1",
@@ -99,19 +99,22 @@ describe("Assets", () => {
         };
         server
             .mockEndpoint()
-            .get("/api/developer/assets/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/4567")
+            .get("/api/developer/assets/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.assets.getAgentAssetDetails("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", 4567);
+        const response = await client.assets.getAgentAssetDetails(
+            "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+            "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+        );
         expect(response).toEqual({
             success: true,
             message: "message",
             timestamp: "2024-01-15T09:30:00Z",
             data: {
-                pk_asset_id: 123,
+                pk_asset_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                 fk_agent_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                 type: "FILE",
                 title: "Product Documentation v2.1",
@@ -149,14 +152,17 @@ describe("Assets", () => {
         };
         server
             .mockEndpoint()
-            .put("/api/developer/assets/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/4569")
+            .put("/api/developer/assets/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.assets.updateAgentAsset("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", 4569);
+        const response = await client.assets.updateAgentAsset(
+            "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+            "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+        );
         expect(response).toEqual({
             success: true,
             message: "message",
@@ -175,23 +181,26 @@ describe("Assets", () => {
             success: true,
             message: "message",
             timestamp: "2024-01-15T09:30:00Z",
-            data: { assetId: 1, chunksRemoved: 1 },
+            data: { assetId: "assetId", chunksRemoved: 1 },
         };
         server
             .mockEndpoint()
-            .delete("/api/developer/assets/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/4369")
+            .delete("/api/developer/assets/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.assets.deleteAgentAsset("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", 4369);
+        const response = await client.assets.deleteAgentAsset(
+            "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+            "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+        );
         expect(response).toEqual({
             success: true,
             message: "message",
             timestamp: "2024-01-15T09:30:00Z",
             data: {
-                assetId: 1,
+                assetId: "assetId",
                 chunksRemoved: 1,
             },
         });
@@ -208,7 +217,7 @@ describe("Assets", () => {
             message: "message",
             timestamp: "2024-01-15T09:30:00Z",
             data: {
-                assetId: 124,
+                assetId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                 title: "Customer Service FAQ v3.0",
                 type: "TEXT",
                 url: "gs://sonyk-bucket/assets/agent_123/124/text.txt",
@@ -239,7 +248,7 @@ describe("Assets", () => {
             message: "message",
             timestamp: "2024-01-15T09:30:00Z",
             data: {
-                assetId: 124,
+                assetId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                 title: "Customer Service FAQ v3.0",
                 type: "TEXT",
                 url: "gs://sonyk-bucket/assets/agent_123/124/text.txt",
@@ -264,7 +273,7 @@ describe("Assets", () => {
             message: "message",
             timestamp: "2024-01-15T09:30:00Z",
             data: {
-                assetId: 123,
+                assetId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                 title: "Product Documentation v2.1",
                 type: "FILE",
                 content:
@@ -276,19 +285,24 @@ describe("Assets", () => {
         };
         server
             .mockEndpoint()
-            .get("/api/developer/assets/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/3478/content")
+            .get(
+                "/api/developer/assets/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/content",
+            )
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.assets.getAgentAssetContent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", 3478);
+        const response = await client.assets.getAgentAssetContent(
+            "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+            "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+        );
         expect(response).toEqual({
             success: true,
             message: "message",
             timestamp: "2024-01-15T09:30:00Z",
             data: {
-                assetId: 123,
+                assetId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                 title: "Product Documentation v2.1",
                 type: "FILE",
                 content:
@@ -313,7 +327,7 @@ describe("Assets", () => {
                 results: [
                     {
                         pk_chunk_id: 156,
-                        fk_asset_id: 12,
+                        fk_asset_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                         chunk_text:
                             "To reset your password, go to the login page and click 'Forgot Password'. Enter your email address and check your inbox for reset instructions.",
                         chunk_type: "DOCUMENT",
@@ -324,7 +338,7 @@ describe("Assets", () => {
                     },
                     {
                         pk_chunk_id: 203,
-                        fk_asset_id: 18,
+                        fk_asset_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                         chunk_text:
                             "Password requirements: minimum 8 characters, one uppercase letter, one number, and one special character.",
                         chunk_type: "DOCUMENT",
@@ -364,7 +378,7 @@ describe("Assets", () => {
                 results: [
                     {
                         pk_chunk_id: 156,
-                        fk_asset_id: 12,
+                        fk_asset_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                         chunk_text:
                             "To reset your password, go to the login page and click 'Forgot Password'. Enter your email address and check your inbox for reset instructions.",
                         chunk_type: "DOCUMENT",
@@ -375,7 +389,7 @@ describe("Assets", () => {
                     },
                     {
                         pk_chunk_id: 203,
-                        fk_asset_id: 18,
+                        fk_asset_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
                         chunk_text:
                             "Password requirements: minimum 8 characters, one uppercase letter, one number, and one special character.",
                         chunk_type: "DOCUMENT",

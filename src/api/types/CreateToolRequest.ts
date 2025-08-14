@@ -21,11 +21,6 @@ export interface CreateToolRequest {
      */
     server_url: string;
     /**
-     * HTTP headers to include with all tool requests.
-     * Common headers include Content-Type and Authorization.
-     */
-    tool_headers?: Record<string, string>;
-    /**
      * Parameters that the tool accepts. Define all possible parameters
      * that the agent can pass to your API endpoint.
      */

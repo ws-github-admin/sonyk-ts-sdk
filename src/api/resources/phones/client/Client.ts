@@ -214,7 +214,7 @@ export class Phones {
      * @param {Phones.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.phones.getPhone("12da7cbd-94a4-4a45-b312-98a5sa1f5124")
+     *     await client.phones.getPhone("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
      */
     public getPhone(
         phoneId: string,
@@ -284,7 +284,7 @@ export class Phones {
      * @param {Phones.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.phones.updatePhone("12da7cbd-94a4-4a45-b312-98a5sa1f5124")
+     *     await client.phones.updatePhone("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
      */
     public updatePhone(
         phoneId: string,
@@ -358,7 +358,7 @@ export class Phones {
      * @param {Phones.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.phones.deletePhone("12da7cbd-94a4-4a45-b312-98a5sa1f5124")
+     *     await client.phones.deletePhone("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
      */
     public deletePhone(
         phoneId: string,
@@ -428,7 +428,7 @@ export class Phones {
      * @param {Phones.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.phones.mapPhoneToAgent("12da7cbd-94a4-4a45-b312-98a5sa1f5124", {
+     *     await client.phones.mapPhoneToAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", {
      *         agentId: "agentId"
      *     })
      */
@@ -504,7 +504,7 @@ export class Phones {
      * @param {Phones.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.phones.unmapPhoneFromAgent("12da7cbd-94a4-4a45-b312-98a5sa1f5124")
+     *     await client.phones.unmapPhoneFromAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
      */
     public unmapPhoneFromAgent(
         phoneId: string,
