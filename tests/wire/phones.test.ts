@@ -69,7 +69,12 @@ describe("Phones", () => {
     test("createPhone", async () => {
         const server = mockServerPool.createServer();
         const client = new SonykClient({ apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = { phoneNumber: "+xxxxxxxxxx", provider: "twilio" };
+        const rawRequestBody = {
+            phoneNumber: "+xxxxxxxxxx",
+            provider: "twilio",
+            twilioSid: "ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            twilioToken: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        };
         const rawResponseBody = {
             success: true,
             message: "message",
@@ -98,6 +103,8 @@ describe("Phones", () => {
         const response = await client.phones.createPhone({
             phoneNumber: "+xxxxxxxxxx",
             provider: "twilio",
+            twilioSid: "ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            twilioToken: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
         });
         expect(response).toEqual({
             success: true,

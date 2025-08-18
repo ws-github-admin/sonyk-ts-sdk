@@ -143,7 +143,9 @@ export class Phones {
      * @example
      *     await client.phones.createPhone({
      *         phoneNumber: "+xxxxxxxxxx",
-     *         provider: "twilio"
+     *         provider: "twilio",
+     *         twilioSid: "ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+     *         twilioToken: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
      *     })
      */
     public createPhone(

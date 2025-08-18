@@ -6,9 +6,7 @@
  * @example
  *     {
  *         agentId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
- *         toNumber: "+xxxxxxxxxx",
- *         twilioSid: "ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
- *         twilioToken: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+ *         toNumber: "+xxxxxxxxxx"
  *     }
  */
 export interface InitiateCallRequest {
@@ -16,10 +14,6 @@ export interface InitiateCallRequest {
     agentId: string;
     /** Phone number to call (E.164 format) */
     toNumber: string;
-    /** Twilio SID */
-    twilioSid: string;
-    /** Twilio Token */
-    twilioToken: string;
     /** Optional JSON object containing custom variables to pass to the agent during the call */
     variables?: Record<string, unknown>;
 }

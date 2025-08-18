@@ -6,7 +6,9 @@
  * @example
  *     {
  *         phoneNumber: "+xxxxxxxxxx",
- *         provider: "twilio"
+ *         provider: "twilio",
+ *         twilioSid: "ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ *         twilioToken: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
  *     }
  */
 export interface CreatePhoneRequest {
@@ -14,6 +16,10 @@ export interface CreatePhoneRequest {
     phoneNumber: string;
     /** Phone service provider */
     provider: string;
+    /** Twilio SID */
+    twilioSid: string;
+    /** Twilio Token */
+    twilioToken: string;
     /** Optional friendly name for the phone */
     nickname?: string;
     /** Optional agent to assign the phone to */

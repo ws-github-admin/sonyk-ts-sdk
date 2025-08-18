@@ -9,12 +9,7 @@ describe("Calls", () => {
     test("initiateCall", async () => {
         const server = mockServerPool.createServer();
         const client = new SonykClient({ apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = {
-            agentId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
-            toNumber: "+xxxxxxxxxx",
-            twilioSid: "ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            twilioToken: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-        };
+        const rawRequestBody = { agentId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", toNumber: "+xxxxxxxxxx" };
         const rawResponseBody = {
             success: true,
             message: "message",
@@ -44,8 +39,6 @@ describe("Calls", () => {
         const response = await client.calls.initiateCall({
             agentId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
             toNumber: "+xxxxxxxxxx",
-            twilioSid: "ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            twilioToken: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
         });
         expect(response).toEqual({
             success: true,

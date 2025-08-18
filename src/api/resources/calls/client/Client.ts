@@ -55,9 +55,7 @@ export class Calls {
      * @example
      *     await client.calls.initiateCall({
      *         agentId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
-     *         toNumber: "+xxxxxxxxxx",
-     *         twilioSid: "ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-     *         twilioToken: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+     *         toNumber: "+xxxxxxxxxx"
      *     })
      */
     public initiateCall(

@@ -655,6 +655,8 @@ Add a new phone number to the organization
 await client.phones.createPhone({
     phoneNumber: "+xxxxxxxxxx",
     provider: "twilio",
+    twilioSid: "ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    twilioToken: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
 });
 ```
 
@@ -2368,8 +2370,6 @@ Validates permissions and credits, then forwards request to core.sonyk.io.
 await client.calls.initiateCall({
     agentId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
     toNumber: "+xxxxxxxxxx",
-    twilioSid: "ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    twilioToken: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
 });
 ```
 
