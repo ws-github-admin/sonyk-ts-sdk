@@ -6,6 +6,7 @@ import * as environments from "./environments.js";
 import * as core from "./core/index.js";
 import { mergeHeaders } from "./core/headers.js";
 import { Agents } from "./api/resources/agents/client/Client.js";
+import { Providers } from "./api/resources/providers/client/Client.js";
 import { Phones } from "./api/resources/phones/client/Client.js";
 import { Tools } from "./api/resources/tools/client/Client.js";
 import { Assets } from "./api/resources/assets/client/Client.js";
@@ -39,6 +40,7 @@ export declare namespace SonykClient {
 export class SonykClient {
     protected readonly _options: SonykClient.Options;
     protected _agents: Agents | undefined;
+    protected _providers: Providers | undefined;
     protected _phones: Phones | undefined;
     protected _tools: Tools | undefined;
     protected _assets: Assets | undefined;
@@ -63,6 +65,10 @@ export class SonykClient {
 
     public get agents(): Agents {
         return (this._agents ??= new Agents(this._options));
+    }
+
+    public get providers(): Providers {
+        return (this._providers ??= new Providers(this._options));
     }
 
     public get phones(): Phones {

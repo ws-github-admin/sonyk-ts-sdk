@@ -7,13 +7,19 @@ import * as Sonyk from "../index.js";
 /**
  * Text-to-Speech configuration that controls how the agent's voice sounds.
  * This determines the personality and quality of the agent's speech.
+ * This is the provider-specific ID that will be used.
  */
 export type AgentConfigurationTts =
+    | Sonyk.AgentConfigurationTts.Sonyk
     | Sonyk.AgentConfigurationTts.Elevenlabs
     | Sonyk.AgentConfigurationTts.Cartesia
     | Sonyk.AgentConfigurationTts.Groq;
 
 export namespace AgentConfigurationTts {
+    export interface Sonyk extends Sonyk.SonykTts {
+        provider: "sonyk";
+    }
+
     export interface Elevenlabs extends Sonyk.ElevenLabsTts {
         provider: "elevenlabs";
     }

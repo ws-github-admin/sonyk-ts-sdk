@@ -97,23 +97,21 @@ await client.agents.createAgent({
     agent_name: "Restaurant Receptionist",
     agent_json: {
         llm: {
-            provider: "openai",
-            model: "gpt-5",
-            systemPrompt:
-                "# Role\nYou are Georgia, a friendly and professional receptionist at the  restaurant.\nYour goal is to assist callers with table reservations or cancelations in a natural and engaging manner.\n\nRestaurant opening hours: 10 AM to 11 PM daily\nLocation: 24 Park Street\n\n# Tasks\n- Answer questions about the restaurant\n- Make table reservations\n- Cancel existing reservations\n- Provide information about menu and hours\n\n# Guidelines\n- Always be polite and professional\n- Confirm all reservation details\n- If you can't help, politely explain and offer alternatives\n",
+            provider: "sonyk",
+            model: "sonyk-llm",
+            systemPrompt: "You are Georgia, a friendly and professional receptionist at the  restaurant.\n",
         },
         stt: {
-            provider: "deepgram",
-            model: "nova-3",
+            provider: "sonyk",
+            model: "sonyk-stt",
             language: "en",
         },
         tts: {
-            provider: "elevenlabs",
-            model: "eleven_multilingual_v2",
-            voiceId: "sarah",
+            provider: "sonyk",
+            model: "sonyk-tts",
+            voiceId: "indigo-sonyk",
         },
-        name: "Georgia - Restaurant Receptionist",
-        firstMessage: "Hello! Welcome to  restaurant. I'm Georgia, how can I help you today?",
+        firstMessage: "Hello! Welcome to  restaurant. I am Georgia, how can I help you today?",
     },
 });
 ```
@@ -547,6 +545,450 @@ await client.agents.unassignToolFromAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
 <dd>
 
 **requestOptions:** `Agents.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Providers
+
+<details><summary><code>client.providers.<a href="/src/api/resources/providers/client/Client.ts">getProviders</a>() -> Sonyk.ProvidersResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get all supported providers with their current configuration status.
+
+Returns information about which providers are supported and configured.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.providers.getProviders();
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**requestOptions:** `Providers.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.providers.<a href="/src/api/resources/providers/client/Client.ts">getProviderKeysStatus</a>() -> Sonyk.ProviderStatusResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get status of which providers have API keys configured.
+
+Returns list of configured providers without exposing key values.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.providers.getProviderKeysStatus();
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**requestOptions:** `Providers.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.providers.<a href="/src/api/resources/providers/client/Client.ts">getProviderKeys</a>() -> Sonyk.ProviderKeysResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get all configured provider API keys (masked for security).
+
+Returns masked versions of API keys for all configured providers.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.providers.getProviderKeys();
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**requestOptions:** `Providers.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.providers.<a href="/src/api/resources/providers/client/Client.ts">setProviderKeys</a>({ ...params }) -> Sonyk.ProviderKeysUpdateResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Set or update multiple provider API keys at once.
+
+Empty string values will remove the provider key.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.providers.setProviderKeys({
+    provider_keys: {
+        openai: "your_openai_key_here",
+        groq: "your_groq_key_here",
+        deepgram: "your_deepgram_key_here",
+        anthropic: "",
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Sonyk.SetProviderKeysRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Providers.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.providers.<a href="/src/api/resources/providers/client/Client.ts">getProviderKey</a>(provider) -> Sonyk.ProviderKeyResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get API key for a specific provider (masked for security)
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.providers.getProviderKey("groq");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**provider:** `Sonyk.GetProviderKeyRequestProvider` — Provider name
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Providers.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.providers.<a href="/src/api/resources/providers/client/Client.ts">setProviderKey</a>(provider, { ...params }) -> Sonyk.ProviderKeyResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Set or update API key for a specific provider
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.providers.setProviderKey("groq", {
+    api_key: "your_api_key_here",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**provider:** `Sonyk.SetProviderKeyRequestProvider` — Provider name
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Sonyk.SetProviderKeyRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Providers.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.providers.<a href="/src/api/resources/providers/client/Client.ts">removeProviderKey</a>(provider) -> Sonyk.ProviderKeyResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Remove API key for a specific provider
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.providers.removeProviderKey("groq");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**provider:** `Sonyk.RemoveProviderKeyRequestProvider` — Provider name
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Providers.RequestOptions`
 
 </dd>
 </dl>
@@ -1947,7 +2389,7 @@ Provide agents with conversation templates and best practices:
 # Call Opening Scripts
 
 ## For New Customers
-"Thank you for calling [Company]. I'm [Name], and I'm here to help you today."
+"Thank you for calling [Company]. I am [Name], and I am here to help you today."
 
 ## For Returning Customers
 "Welcome back to [Company]! How can I assist you today?"

@@ -9,11 +9,16 @@ import * as Sonyk from "../index.js";
  * This is the "brain" of your agent that processes user input and generates responses.
  */
 export type AgentConfigurationLlm =
+    | Sonyk.AgentConfigurationLlm.Sonyk
     | Sonyk.AgentConfigurationLlm.Openai
     | Sonyk.AgentConfigurationLlm.Anthropic
     | Sonyk.AgentConfigurationLlm.Groq;
 
 export namespace AgentConfigurationLlm {
+    export interface Sonyk extends Sonyk.SonykLlm {
+        provider: "sonyk";
+    }
+
     export interface Openai extends Sonyk.OpenAillm {
         provider: "openai";
     }

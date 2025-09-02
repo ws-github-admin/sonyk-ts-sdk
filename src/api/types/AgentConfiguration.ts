@@ -36,10 +36,9 @@ export interface AgentConfiguration {
     /**
      * Text-to-Speech configuration that controls how the agent's voice sounds.
      * This determines the personality and quality of the agent's speech.
+     * This is the provider-specific ID that will be used.
      */
     tts: Sonyk.AgentConfigurationTts;
-    /** Display name for the agent (for your reference) */
-    name: string;
     /**
      * **Critical Setting**: The first thing your agent says when someone calls.
      * This sets the tone for the entire conversation.
@@ -69,49 +68,5 @@ export interface AgentConfiguration {
      * Schema definition for structured data extraction from calls.
      * This defines what data should be captured and returned after each call.
      */
-    structuredDataSchema?: AgentConfiguration.StructuredDataSchema;
-}
-
-export namespace AgentConfiguration {
-    /**
-     * Schema definition for structured data extraction from calls.
-     * This defines what data should be captured and returned after each call.
-     */
-    export interface StructuredDataSchema {
-        /** Array of tags to categorize the call */
-        tags: string[];
-        /** Type/category of the call */
-        call_type: StructuredDataSchema.CallType;
-        /** Brief summary of the call content */
-        call_summary: string;
-        /** Whether to send menu/dish information via SMS */
-        sendMenuDishSMS?: boolean;
-        /** Reason if the call was transferred to a human */
-        reasonOfCallTransfer?: string;
-        /** Accepts any additional properties */
-        [key: string]: any;
-    }
-
-    export namespace StructuredDataSchema {
-        /**
-         * Type/category of the call
-         */
-        export type CallType =
-            | "Reservation"
-            | "Takeaway"
-            | "Delivery"
-            | "Walk-in"
-            | "Enquiry"
-            | "Information"
-            | "Other";
-        export const CallType = {
-            Reservation: "Reservation",
-            Takeaway: "Takeaway",
-            Delivery: "Delivery",
-            WalkIn: "Walk-in",
-            Enquiry: "Enquiry",
-            Information: "Information",
-            Other: "Other",
-        } as const;
-    }
+    structuredDataSchema?: Record<string, unknown>;
 }

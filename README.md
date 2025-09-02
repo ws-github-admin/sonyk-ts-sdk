@@ -1,9 +1,9 @@
-# Sonyk TypeScript Library
+# Ws TypeScript Library
 
 [![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=https%3A%2F%2Fgithub.com%2Fws-github-admin%2Fsonyk-ts-sdk)
 [![npm shield](https://img.shields.io/npm/v/sonyk-sdk)](https://www.npmjs.com/package/sonyk-sdk)
 
-The Sonyk TypeScript library provides convenient access to the Sonyk API from TypeScript.
+The Ws TypeScript library provides convenient access to the Ws APIs from TypeScript.
 
 ## Installation
 
@@ -27,23 +27,21 @@ await client.agents.createAgent({
     agent_name: "Restaurant Receptionist",
     agent_json: {
         llm: {
-            provider: "openai",
-            model: "gpt-5",
-            systemPrompt:
-                "# Role\nYou are Georgia, a friendly and professional receptionist at the  restaurant.\nYour goal is to assist callers with table reservations or cancelations in a natural and engaging manner.\n\nRestaurant opening hours: 10 AM to 11 PM daily\nLocation: 24 Park Street\n\n# Tasks\n- Answer questions about the restaurant\n- Make table reservations\n- Cancel existing reservations\n- Provide information about menu and hours\n\n# Guidelines\n- Always be polite and professional\n- Confirm all reservation details\n- If you can't help, politely explain and offer alternatives\n",
+            provider: "sonyk",
+            model: "sonyk-llm",
+            systemPrompt: "You are Georgia, a friendly and professional receptionist at the  restaurant.\n",
         },
         stt: {
-            provider: "deepgram",
-            model: "nova-3",
+            provider: "sonyk",
+            model: "sonyk-stt",
             language: "en",
         },
         tts: {
-            provider: "elevenlabs",
-            model: "eleven_multilingual_v2",
-            voiceId: "sarah",
+            provider: "sonyk",
+            model: "sonyk-tts",
+            voiceId: "indigo-sonyk",
         },
-        name: "Georgia - Restaurant Receptionist",
-        firstMessage: "Hello! Welcome to  restaurant. I'm Georgia, how can I help you today?",
+        firstMessage: "Hello! Welcome to  restaurant. I am Georgia, how can I help you today?",
     },
 });
 ```

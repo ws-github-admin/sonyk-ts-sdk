@@ -19,7 +19,7 @@ export interface GroqTts {
      *
      * Check Groq documentation for available voice IDs for each model.
      */
-    voiceId?: string;
+    voiceId: string;
 }
 
 export namespace GroqTts {

@@ -8,9 +8,13 @@ import * as Sonyk from "../index.js";
  * Speech-to-Text configuration that converts caller voice to text.
  * This determines how accurately the agent understands what callers say.
  */
-export type AgentConfigurationStt = Sonyk.AgentConfigurationStt.Deepgram;
+export type AgentConfigurationStt = Sonyk.AgentConfigurationStt.Sonyk | Sonyk.AgentConfigurationStt.Deepgram;
 
 export namespace AgentConfigurationStt {
+    export interface Sonyk extends Sonyk.SonykStt {
+        provider: "sonyk";
+    }
+
     export interface Deepgram extends Sonyk.DeepgramStt {
         provider: "deepgram";
     }

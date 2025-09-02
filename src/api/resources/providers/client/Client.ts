@@ -8,7 +8,7 @@ import * as Sonyk from "../../../index.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers.js";
 import * as errors from "../../../../errors/index.js";
 
-export declare namespace Agents {
+export declare namespace Providers {
     export interface Options {
         environment?: core.Supplier<environments.SonykEnvironment | string>;
         /** Specify a custom URL to connect the client to. */
@@ -34,55 +34,38 @@ export declare namespace Agents {
 }
 
 /**
- * AI voice agent management (Developer API)
+ * Provider API key management
  */
-export class Agents {
-    protected readonly _options: Agents.Options;
+export class Providers {
+    protected readonly _options: Providers.Options;
 
-    constructor(_options: Agents.Options) {
+    constructor(_options: Providers.Options) {
         this._options = _options;
     }
 
     /**
-     * Retrieve all agents for the organization
+     * Get all supported providers with their current configuration status.
      *
-     * @param {Sonyk.ListAgentsRequest} request
-     * @param {Agents.RequestOptions} requestOptions - Request-specific configuration.
+     * Returns information about which providers are supported and configured.
+     *
+     * @param {Providers.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.agents.listAgents()
+     *     await client.providers.getProviders()
      */
-    public listAgents(
-        request: Sonyk.ListAgentsRequest = {},
-        requestOptions?: Agents.RequestOptions,
-    ): core.HttpResponsePromise<Sonyk.AgentListResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__listAgents(request, requestOptions));
+    public getProviders(requestOptions?: Providers.RequestOptions): core.HttpResponsePromise<Sonyk.ProvidersResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__getProviders(requestOptions));
     }
 
-    private async __listAgents(
-        request: Sonyk.ListAgentsRequest = {},
-        requestOptions?: Agents.RequestOptions,
-    ): Promise<core.WithRawResponse<Sonyk.AgentListResponse>> {
-        const { page, limit, search } = request;
-        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-        if (page != null) {
-            _queryParams["page"] = page.toString();
-        }
-
-        if (limit != null) {
-            _queryParams["limit"] = limit.toString();
-        }
-
-        if (search != null) {
-            _queryParams["search"] = search;
-        }
-
+    private async __getProviders(
+        requestOptions?: Providers.RequestOptions,
+    ): Promise<core.WithRawResponse<Sonyk.ProvidersResponse>> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SonykEnvironment.Default,
-                "api/developer/agents",
+                "api/developer/providers",
             ),
             method: "GET",
             headers: mergeHeaders(
@@ -90,13 +73,13 @@ export class Agents {
                 mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
                 requestOptions?.headers,
             ),
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as Sonyk.AgentListResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Sonyk.ProvidersResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -115,7 +98,7 @@ export class Agents {
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SonykTimeoutError("Timeout exceeded when calling GET /api/developer/agents.");
+                throw new errors.SonykTimeoutError("Timeout exceeded when calling GET /api/developer/providers.");
             case "unknown":
                 throw new errors.SonykError({
                     message: _response.error.errorMessage,
@@ -125,121 +108,30 @@ export class Agents {
     }
 
     /**
-     * Create a new AI voice agent with specified configuration
+     * Get status of which providers have API keys configured.
      *
-     * @param {Sonyk.CreateAgentRequest} request
-     * @param {Agents.RequestOptions} requestOptions - Request-specific configuration.
+     * Returns list of configured providers without exposing key values.
+     *
+     * @param {Providers.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.agents.createAgent({
-     *         agent_name: "Restaurant Receptionist",
-     *         agent_json: {
-     *             llm: {
-     *                 provider: "sonyk",
-     *                 model: "sonyk-llm",
-     *                 systemPrompt: "You are Georgia, a friendly and professional receptionist at the  restaurant.\n"
-     *             },
-     *             stt: {
-     *                 provider: "sonyk",
-     *                 model: "sonyk-stt",
-     *                 language: "en"
-     *             },
-     *             tts: {
-     *                 provider: "sonyk",
-     *                 model: "sonyk-tts",
-     *                 voiceId: "indigo-sonyk"
-     *             },
-     *             firstMessage: "Hello! Welcome to  restaurant. I am Georgia, how can I help you today?"
-     *         }
-     *     })
+     *     await client.providers.getProviderKeysStatus()
      */
-    public createAgent(
-        request: Sonyk.CreateAgentRequest,
-        requestOptions?: Agents.RequestOptions,
-    ): core.HttpResponsePromise<Sonyk.AgentResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__createAgent(request, requestOptions));
+    public getProviderKeysStatus(
+        requestOptions?: Providers.RequestOptions,
+    ): core.HttpResponsePromise<Sonyk.ProviderStatusResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__getProviderKeysStatus(requestOptions));
     }
 
-    private async __createAgent(
-        request: Sonyk.CreateAgentRequest,
-        requestOptions?: Agents.RequestOptions,
-    ): Promise<core.WithRawResponse<Sonyk.AgentResponse>> {
+    private async __getProviderKeysStatus(
+        requestOptions?: Providers.RequestOptions,
+    ): Promise<core.WithRawResponse<Sonyk.ProviderStatusResponse>> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SonykEnvironment.Default,
-                "api/developer/agents",
-            ),
-            method: "POST",
-            headers: mergeHeaders(
-                this._options?.headers,
-                mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
-                requestOptions?.headers,
-            ),
-            contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
-            requestType: "json",
-            body: request,
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-        });
-        if (_response.ok) {
-            return { data: _response.body as Sonyk.AgentResponse, rawResponse: _response.rawResponse };
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.SonykError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.SonykError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                    rawResponse: _response.rawResponse,
-                });
-            case "timeout":
-                throw new errors.SonykTimeoutError("Timeout exceeded when calling POST /api/developer/agents.");
-            case "unknown":
-                throw new errors.SonykError({
-                    message: _response.error.errorMessage,
-                    rawResponse: _response.rawResponse,
-                });
-        }
-    }
-
-    /**
-     * Retrieve a specific agent by ID with full configuration
-     *
-     * @param {string} agentId - Agent identifier
-     * @param {Agents.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await client.agents.getAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
-     */
-    public getAgent(
-        agentId: string,
-        requestOptions?: Agents.RequestOptions,
-    ): core.HttpResponsePromise<Sonyk.AgentDetailedResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__getAgent(agentId, requestOptions));
-    }
-
-    private async __getAgent(
-        agentId: string,
-        requestOptions?: Agents.RequestOptions,
-    ): Promise<core.WithRawResponse<Sonyk.AgentDetailedResponse>> {
-        const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.SonykEnvironment.Default,
-                `api/developer/agents/${encodeURIComponent(agentId)}`,
+                "api/developer/providers/status",
             ),
             method: "GET",
             headers: mergeHeaders(
@@ -253,7 +145,7 @@ export class Agents {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as Sonyk.AgentDetailedResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Sonyk.ProviderStatusResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -273,7 +165,7 @@ export class Agents {
                 });
             case "timeout":
                 throw new errors.SonykTimeoutError(
-                    "Timeout exceeded when calling GET /api/developer/agents/{agentId}.",
+                    "Timeout exceeded when calling GET /api/developer/providers/status.",
                 );
             case "unknown":
                 throw new errors.SonykError({
@@ -284,35 +176,108 @@ export class Agents {
     }
 
     /**
-     * Update agent configuration. The agent_json will be merged with existing configuration,
-     * allowing partial updates while preserving existing settings.
+     * Get all configured provider API keys (masked for security).
      *
-     * @param {string} agentId
-     * @param {Sonyk.UpdateAgentRequest} request
-     * @param {Agents.RequestOptions} requestOptions - Request-specific configuration.
+     * Returns masked versions of API keys for all configured providers.
+     *
+     * @param {Providers.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.agents.updateAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
+     *     await client.providers.getProviderKeys()
      */
-    public updateAgent(
-        agentId: string,
-        request: Sonyk.UpdateAgentRequest = {},
-        requestOptions?: Agents.RequestOptions,
-    ): core.HttpResponsePromise<Sonyk.AgentResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__updateAgent(agentId, request, requestOptions));
+    public getProviderKeys(
+        requestOptions?: Providers.RequestOptions,
+    ): core.HttpResponsePromise<Sonyk.ProviderKeysResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__getProviderKeys(requestOptions));
     }
 
-    private async __updateAgent(
-        agentId: string,
-        request: Sonyk.UpdateAgentRequest = {},
-        requestOptions?: Agents.RequestOptions,
-    ): Promise<core.WithRawResponse<Sonyk.AgentResponse>> {
+    private async __getProviderKeys(
+        requestOptions?: Providers.RequestOptions,
+    ): Promise<core.WithRawResponse<Sonyk.ProviderKeysResponse>> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SonykEnvironment.Default,
-                `api/developer/agents/${encodeURIComponent(agentId)}`,
+                "api/developer/providers/keys",
+            ),
+            method: "GET",
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
+                requestOptions?.headers,
+            ),
+            queryParameters: requestOptions?.queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return { data: _response.body as Sonyk.ProviderKeysResponse, rawResponse: _response.rawResponse };
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.SonykError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+                rawResponse: _response.rawResponse,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.SonykError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
+                });
+            case "timeout":
+                throw new errors.SonykTimeoutError("Timeout exceeded when calling GET /api/developer/providers/keys.");
+            case "unknown":
+                throw new errors.SonykError({
+                    message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
+                });
+        }
+    }
+
+    /**
+     * Set or update multiple provider API keys at once.
+     *
+     * Empty string values will remove the provider key.
+     *
+     * @param {Sonyk.SetProviderKeysRequest} request
+     * @param {Providers.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Sonyk.BadRequestError}
+     *
+     * @example
+     *     await client.providers.setProviderKeys({
+     *         provider_keys: {
+     *             "openai": "your_openai_key_here",
+     *             "groq": "your_groq_key_here",
+     *             "deepgram": "your_deepgram_key_here",
+     *             "anthropic": ""
+     *         }
+     *     })
+     */
+    public setProviderKeys(
+        request: Sonyk.SetProviderKeysRequest,
+        requestOptions?: Providers.RequestOptions,
+    ): core.HttpResponsePromise<Sonyk.ProviderKeysUpdateResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__setProviderKeys(request, requestOptions));
+    }
+
+    private async __setProviderKeys(
+        request: Sonyk.SetProviderKeysRequest,
+        requestOptions?: Providers.RequestOptions,
+    ): Promise<core.WithRawResponse<Sonyk.ProviderKeysUpdateResponse>> {
+        const _response = await (this._options.fetcher ?? core.fetcher)({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SonykEnvironment.Default,
+                "api/developer/providers/keys",
             ),
             method: "PUT",
             headers: mergeHeaders(
@@ -329,15 +294,20 @@ export class Agents {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as Sonyk.AgentResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Sonyk.ProviderKeysUpdateResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SonykError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Sonyk.BadRequestError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.SonykError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -348,9 +318,7 @@ export class Agents {
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SonykTimeoutError(
-                    "Timeout exceeded when calling PUT /api/developer/agents/{agentId}.",
-                );
+                throw new errors.SonykTimeoutError("Timeout exceeded when calling PUT /api/developer/providers/keys.");
             case "unknown":
                 throw new errors.SonykError({
                     message: _response.error.errorMessage,
@@ -360,100 +328,33 @@ export class Agents {
     }
 
     /**
-     * Delete an agent (permanent deletion)
+     * Get API key for a specific provider (masked for security)
      *
-     * @param {string} agentId
-     * @param {Agents.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {Sonyk.GetProviderKeyRequestProvider} provider - Provider name
+     * @param {Providers.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Sonyk.NotFoundError}
      *
      * @example
-     *     await client.agents.deleteAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
+     *     await client.providers.getProviderKey("groq")
      */
-    public deleteAgent(
-        agentId: string,
-        requestOptions?: Agents.RequestOptions,
-    ): core.HttpResponsePromise<Sonyk.SuccessResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__deleteAgent(agentId, requestOptions));
+    public getProviderKey(
+        provider: Sonyk.GetProviderKeyRequestProvider,
+        requestOptions?: Providers.RequestOptions,
+    ): core.HttpResponsePromise<Sonyk.ProviderKeyResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__getProviderKey(provider, requestOptions));
     }
 
-    private async __deleteAgent(
-        agentId: string,
-        requestOptions?: Agents.RequestOptions,
-    ): Promise<core.WithRawResponse<Sonyk.SuccessResponse>> {
+    private async __getProviderKey(
+        provider: Sonyk.GetProviderKeyRequestProvider,
+        requestOptions?: Providers.RequestOptions,
+    ): Promise<core.WithRawResponse<Sonyk.ProviderKeyResponse>> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SonykEnvironment.Default,
-                `api/developer/agents/${encodeURIComponent(agentId)}`,
-            ),
-            method: "DELETE",
-            headers: mergeHeaders(
-                this._options?.headers,
-                mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
-                requestOptions?.headers,
-            ),
-            queryParameters: requestOptions?.queryParams,
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-        });
-        if (_response.ok) {
-            return { data: _response.body as Sonyk.SuccessResponse, rawResponse: _response.rawResponse };
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.SonykError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.SonykError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                    rawResponse: _response.rawResponse,
-                });
-            case "timeout":
-                throw new errors.SonykTimeoutError(
-                    "Timeout exceeded when calling DELETE /api/developer/agents/{agentId}.",
-                );
-            case "unknown":
-                throw new errors.SonykError({
-                    message: _response.error.errorMessage,
-                    rawResponse: _response.rawResponse,
-                });
-        }
-    }
-
-    /**
-     * Retrieve all tools assigned to a specific agent
-     *
-     * @param {string} agentId
-     * @param {Agents.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await client.agents.getAgentTools("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
-     */
-    public getAgentTools(
-        agentId: string,
-        requestOptions?: Agents.RequestOptions,
-    ): core.HttpResponsePromise<Sonyk.ToolListResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__getAgentTools(agentId, requestOptions));
-    }
-
-    private async __getAgentTools(
-        agentId: string,
-        requestOptions?: Agents.RequestOptions,
-    ): Promise<core.WithRawResponse<Sonyk.ToolListResponse>> {
-        const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.SonykEnvironment.Default,
-                `api/developer/agents/${encodeURIComponent(agentId)}/tools`,
+                `api/developer/providers/${encodeURIComponent(provider)}/key`,
             ),
             method: "GET",
             headers: mergeHeaders(
@@ -467,15 +368,20 @@ export class Agents {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as Sonyk.ToolListResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Sonyk.ProviderKeyResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SonykError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
+            switch (_response.error.statusCode) {
+                case 404:
+                    throw new Sonyk.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.SonykError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -487,7 +393,7 @@ export class Agents {
                 });
             case "timeout":
                 throw new errors.SonykTimeoutError(
-                    "Timeout exceeded when calling GET /api/developer/agents/{agentId}/tools.",
+                    "Timeout exceeded when calling GET /api/developer/providers/{provider}/key.",
                 );
             case "unknown":
                 throw new errors.SonykError({
@@ -498,38 +404,40 @@ export class Agents {
     }
 
     /**
-     * Assign an existing tool to an agent
+     * Set or update API key for a specific provider
      *
-     * @param {string} agentId
-     * @param {Sonyk.AssignToolToAgentRequest} request
-     * @param {Agents.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {Sonyk.SetProviderKeyRequestProvider} provider - Provider name
+     * @param {Sonyk.SetProviderKeyRequest} request
+     * @param {Providers.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Sonyk.BadRequestError}
      *
      * @example
-     *     await client.agents.assignToolToAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", {
-     *         toolId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"
+     *     await client.providers.setProviderKey("groq", {
+     *         api_key: "your_api_key_here"
      *     })
      */
-    public assignToolToAgent(
-        agentId: string,
-        request: Sonyk.AssignToolToAgentRequest,
-        requestOptions?: Agents.RequestOptions,
-    ): core.HttpResponsePromise<Sonyk.SuccessResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__assignToolToAgent(agentId, request, requestOptions));
+    public setProviderKey(
+        provider: Sonyk.SetProviderKeyRequestProvider,
+        request: Sonyk.SetProviderKeyRequest,
+        requestOptions?: Providers.RequestOptions,
+    ): core.HttpResponsePromise<Sonyk.ProviderKeyResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__setProviderKey(provider, request, requestOptions));
     }
 
-    private async __assignToolToAgent(
-        agentId: string,
-        request: Sonyk.AssignToolToAgentRequest,
-        requestOptions?: Agents.RequestOptions,
-    ): Promise<core.WithRawResponse<Sonyk.SuccessResponse>> {
+    private async __setProviderKey(
+        provider: Sonyk.SetProviderKeyRequestProvider,
+        request: Sonyk.SetProviderKeyRequest,
+        requestOptions?: Providers.RequestOptions,
+    ): Promise<core.WithRawResponse<Sonyk.ProviderKeyResponse>> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SonykEnvironment.Default,
-                `api/developer/agents/${encodeURIComponent(agentId)}/tools`,
+                `api/developer/providers/${encodeURIComponent(provider)}/key`,
             ),
-            method: "POST",
+            method: "PUT",
             headers: mergeHeaders(
                 this._options?.headers,
                 mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
@@ -544,15 +452,20 @@ export class Agents {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as Sonyk.SuccessResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Sonyk.ProviderKeyResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SonykError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Sonyk.BadRequestError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.SonykError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -564,7 +477,7 @@ export class Agents {
                 });
             case "timeout":
                 throw new errors.SonykTimeoutError(
-                    "Timeout exceeded when calling POST /api/developer/agents/{agentId}/tools.",
+                    "Timeout exceeded when calling PUT /api/developer/providers/{provider}/key.",
                 );
             case "unknown":
                 throw new errors.SonykError({
@@ -575,36 +488,33 @@ export class Agents {
     }
 
     /**
-     * Remove a tool assignment from an agent
+     * Remove API key for a specific provider
      *
-     * @param {string} agentId
-     * @param {Sonyk.UnassignToolFromAgentRequest} request
-     * @param {Agents.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {Sonyk.RemoveProviderKeyRequestProvider} provider - Provider name
+     * @param {Providers.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Sonyk.NotFoundError}
      *
      * @example
-     *     await client.agents.unassignToolFromAgent("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", {
-     *         toolId: "toolId"
-     *     })
+     *     await client.providers.removeProviderKey("groq")
      */
-    public unassignToolFromAgent(
-        agentId: string,
-        request: Sonyk.UnassignToolFromAgentRequest,
-        requestOptions?: Agents.RequestOptions,
-    ): core.HttpResponsePromise<Sonyk.SuccessResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__unassignToolFromAgent(agentId, request, requestOptions));
+    public removeProviderKey(
+        provider: Sonyk.RemoveProviderKeyRequestProvider,
+        requestOptions?: Providers.RequestOptions,
+    ): core.HttpResponsePromise<Sonyk.ProviderKeyResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__removeProviderKey(provider, requestOptions));
     }
 
-    private async __unassignToolFromAgent(
-        agentId: string,
-        request: Sonyk.UnassignToolFromAgentRequest,
-        requestOptions?: Agents.RequestOptions,
-    ): Promise<core.WithRawResponse<Sonyk.SuccessResponse>> {
+    private async __removeProviderKey(
+        provider: Sonyk.RemoveProviderKeyRequestProvider,
+        requestOptions?: Providers.RequestOptions,
+    ): Promise<core.WithRawResponse<Sonyk.ProviderKeyResponse>> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SonykEnvironment.Default,
-                `api/developer/agents/${encodeURIComponent(agentId)}/tools`,
+                `api/developer/providers/${encodeURIComponent(provider)}/key`,
             ),
             method: "DELETE",
             headers: mergeHeaders(
@@ -612,24 +522,26 @@ export class Agents {
                 mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
                 requestOptions?.headers,
             ),
-            contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
-            requestType: "json",
-            body: request,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as Sonyk.SuccessResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Sonyk.ProviderKeyResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SonykError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
+            switch (_response.error.statusCode) {
+                case 404:
+                    throw new Sonyk.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.SonykError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -641,7 +553,7 @@ export class Agents {
                 });
             case "timeout":
                 throw new errors.SonykTimeoutError(
-                    "Timeout exceeded when calling DELETE /api/developer/agents/{agentId}/tools.",
+                    "Timeout exceeded when calling DELETE /api/developer/providers/{provider}/key.",
                 );
             case "unknown":
                 throw new errors.SonykError({

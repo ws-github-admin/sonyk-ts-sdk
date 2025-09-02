@@ -673,7 +673,7 @@ export class Assets {
      * # Call Opening Scripts
      *
      * ## For New Customers
-     * "Thank you for calling [Company]. I'm [Name], and I'm here to help you today."
+     * "Thank you for calling [Company]. I am [Name], and I am here to help you today."
      *
      * ## For Returning Customers
      * "Welcome back to [Company]! How can I assist you today?"

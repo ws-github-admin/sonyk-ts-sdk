@@ -1,3 +1,5 @@
+export * as providers from "./providers/index.js";
+export * from "./providers/types/index.js";
 export * as assets from "./assets/index.js";
 export * from "./assets/types/index.js";
 export * as agents from "./agents/index.js";
@@ -5,6 +7,7 @@ export * as phones from "./phones/index.js";
 export * as tools from "./tools/index.js";
 export * as calls from "./calls/index.js";
 export * from "./agents/client/requests/index.js";
+export * from "./providers/client/requests/index.js";
 export * from "./phones/client/requests/index.js";
 export * from "./tools/client/requests/index.js";
 export * from "./assets/client/requests/index.js";
